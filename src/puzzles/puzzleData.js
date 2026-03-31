@@ -231,6 +231,38 @@ const PUZZLES = [
       { era: "1600s", def: "Sumptuous living, costly elegance and comfort" },
     ],
   },
+  {
+    answer: "ALCOHOL",
+    clue: "A very fine powder, especially antimony used as eyeliner",
+    hints: [
+      { era: "1600s", def: "The pure essence or spirit of any substance" },
+      { era: "1700s", def: "The intoxicating ingredient in fermented drinks" },
+    ],
+  },
+  {
+    answer: "AMATEUR",
+    clue: "A lover of something; one who pursues it for love alone",
+    hints: [
+      { era: "1800s", def: "One who cultivates a pursuit without doing it professionally" },
+      { era: "1900s", def: "Someone unskilled or lacking proficiency" },
+    ],
+  },
+  {
+    answer: "ALBUM",
+    clue: "A white tablet on which public notices and edicts are recorded",
+    hints: [
+      { era: "1600s", def: "A book of blank pages for collecting autographs or memorabilia" },
+      { era: "1900s", def: "A collection of musical recordings released together" },
+    ],
+  },
+  {
+    answer: "ATLAS",
+    clue: "A rich satin fabric",
+    hints: [
+      { era: "1500s", def: "A figure bearing a great weight upon his shoulders" },
+      { era: "1600s", def: "A bound collection of maps of the world" },
+    ],
+  },
 ];
 
 export default PUZZLES;

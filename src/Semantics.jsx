@@ -8,14 +8,7 @@ initializeCache(PUZZLES);
 // --- Game config ---
 const MAX_EXPLORES = 3;
 const MAX_SOLVES = 3;
-const MIN_CAP = 5;
 const KB_ROWS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
-
-function getExploreCap(exploreIndex, answerLen) {
-  const divs = [2, 1.5, 1];
-  const raw = Math.ceil(answerLen / (divs[exploreIndex] || 1));
-  return Math.max(MIN_CAP, raw);
-}
 
 function getVisibleWord(answer, keyStates) {
   const found = new Set(
@@ -71,7 +64,7 @@ export default function Semantics() {
   const solves = guesses.filter((g) => g.mode === "solve").length;
   const hasExplores = explores < MAX_EXPLORES;
   const hasSolves = solves < MAX_SOLVES;
-  const currentExploreCap = getExploreCap(explores, answer.length);
+  const exploreCap = answer.length;
 
   const keyStates = useMemo(() => {
     const s = {};
@@ -119,10 +112,10 @@ export default function Semantics() {
         return;
       }
 
-      if (mode === "explore" && g.length > currentExploreCap) {
+      if (mode === "explore" && g.length > exploreCap) {
         setShake(true);
         setTimeout(() => setShake(false), 500);
-        showToast(`Max ${currentExploreCap} letters this explore`);
+        showToast(`Max ${exploreCap} letters`);
         return;
       }
 
@@ -199,7 +192,7 @@ export default function Semantics() {
         setGameState("lost");
       }
     },
-    [input, guesses, answer, answerSet, gameState, hasExplores, hasSolves, keyStates, currentExploreCap, checking]
+    [input, guesses, answer, answerSet, gameState, hasExplores, hasSolves, keyStates, exploreCap, checking]
   );
 
   const handleKey = useCallback(
@@ -367,7 +360,7 @@ export default function Semantics() {
               <span style={S.actionLabel}>{checking ? "Checking…" : "Explore"}</span>
               <span style={S.actionDesc}>Checks which letters match</span>
               <span style={S.actionMeta}>
-                Max {currentExploreCap} letters · {MAX_EXPLORES - explores} left
+                Up to {exploreCap} letters · {MAX_EXPLORES - explores} left
               </span>
             </button>
             <button
