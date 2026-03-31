@@ -1,12 +1,18 @@
 import PUZZLES from "./puzzleData";
 
+const dayOffset = Math.floor((new Date() - new Date(2026, 0, 1)) / 86400000);
+
+export function getPuzzleByIndex(index) {
+  const i = ((dayOffset + index) % PUZZLES.length + PUZZLES.length) % PUZZLES.length;
+  return PUZZLES[i];
+}
+
 export function getDailyPuzzle() {
-  const d = Math.floor((new Date() - new Date(2026, 0, 1)) / 86400000);
-  return PUZZLES[((d % PUZZLES.length) + PUZZLES.length) % PUZZLES.length];
+  return getPuzzleByIndex(0);
 }
 
 export function getPuzzleNumber() {
-  return Math.floor((new Date() - new Date(2026, 0, 1)) / 86400000) + 1;
+  return dayOffset + 1;
 }
 
 export default PUZZLES;

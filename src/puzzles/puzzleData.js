@@ -119,6 +119,118 @@ const PUZZLES = [
       { era: "1600s", def: "A sweetheart; a female child" },
     ],
   },
+  {
+    answer: "CUNNING",
+    clue: "Possessing knowledge, learned, skillful",
+    hints: [
+      { era: "1400s", def: "Possessing magical knowledge or skill" },
+      { era: "1700s", def: "Crafty, sly, deceitfully clever" },
+    ],
+  },
+  {
+    answer: "VILLAIN",
+    clue: "A peasant farmer bound to a feudal lord's estate",
+    hints: [
+      { era: "1300s", def: "A lowborn rustic, a person of base birth" },
+      { era: "1600s", def: "A wicked person, a scoundrel" },
+    ],
+  },
+  {
+    answer: "HOUND",
+    clue: "Any dog whatsoever, regardless of breed",
+    hints: [
+      { era: "1200s", def: "A dog kept for hunting game" },
+      { era: "1600s", def: "To pursue relentlessly, to harass" },
+    ],
+  },
+  {
+    answer: "DEER",
+    clue: "Any animal, any living creature that is not human",
+    hints: [
+      { era: "1200s", def: "A wild animal hunted for sport" },
+      { era: "1500s", def: "A specific hoofed ruminant with antlers" },
+    ],
+  },
+  {
+    answer: "STARVE",
+    clue: "To die, from any cause whatsoever",
+    hints: [
+      { era: "1300s", def: "To die slowly, especially from cold" },
+      { era: "1500s", def: "To perish or suffer from lack of food" },
+    ],
+  },
+  {
+    answer: "PRETTY",
+    clue: "Cunning, crafty, wily in dealings",
+    hints: [
+      { era: "1400s", def: "Clever, skillfully made, ingenious" },
+      { era: "1600s", def: "Pleasing to look at, attractive in a delicate way" },
+    ],
+  },
+  {
+    answer: "BRAVE",
+    clue: "Showy, gaudy, finely dressed",
+    hints: [
+      { era: "1500s", def: "Splendid, handsome, making a fine display" },
+      { era: "1600s", def: "Courageous, ready to face danger" },
+    ],
+  },
+  {
+    answer: "MARSHAL",
+    clue: "A servant who tends to horses",
+    hints: [
+      { era: "1300s", def: "An officer in charge of a royal household" },
+      { era: "1500s", def: "A military commander or law enforcement officer" },
+    ],
+  },
+  {
+    answer: "HAZARD",
+    clue: "A game of dice played for stakes",
+    hints: [
+      { era: "1400s", def: "A chance, a stroke of luck or fortune" },
+      { era: "1600s", def: "A danger, a source of risk or peril" },
+    ],
+  },
+  {
+    answer: "FIZZLE",
+    clue: "To break wind silently",
+    hints: [
+      { era: "1500s", def: "To make a hissing or sputtering sound" },
+      { era: "1800s", def: "To fail weakly after a promising start" },
+    ],
+  },
+  {
+    answer: "MANUFACTURE",
+    clue: "To make something by hand, a handmade article",
+    hints: [
+      { era: "1600s", def: "The process of making goods by hand or machinery" },
+      { era: "1800s", def: "To produce goods in large quantities by machine" },
+    ],
+  },
+  {
+    answer: "TREACLE",
+    clue: "An antidote against venom or poison",
+    hints: [
+      { era: "1400s", def: "A medicinal compound, a healing remedy" },
+      { era: "1600s", def: "A thick, sweet syrup produced in refining sugar" },
+    ],
+  },
+  {
+    answer: "PASSENGER",
+    clue: "A passer-by, one who passes through a place on foot",
+    hints: [
+      { era: "1400s", def: "A traveler, a wayfarer on a journey" },
+      { era: "1600s", def: "One who is carried in a vehicle or vessel" },
+    ],
+  },
+  {
+    answer: "LUXURY",
+    clue: "Lust, lechery, sinful indulgence of the flesh",
+    hints: [
+      { era: "1400s", def: "Lasciviousness, habitual indulgence in pleasure" },
+      { era: "1600s", def: "Sumptuous living, costly elegance and comfort" },
+    ],
+  },
 ];
 
 export default PUZZLES;

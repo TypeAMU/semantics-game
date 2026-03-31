@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import PUZZLES, { getDailyPuzzle, getPuzzleNumber } from "./puzzles";
+import PUZZLES, { getPuzzleByIndex } from "./puzzles";
 import { isWord, initializeCache } from "./services/wordValidation";
 import { fetchDefinitions } from "./services/definitionsApi";
 
@@ -27,8 +27,8 @@ function getVisibleWord(answer, keyStates) {
 }
 
 export default function Semantics() {
-  const puzzle = useRef(getDailyPuzzle()).current;
-  const puzzleNum = useRef(getPuzzleNumber()).current;
+  const [puzzleIndex, setPuzzleIndex] = useState(0);
+  const puzzle = getPuzzleByIndex(puzzleIndex);
   const answer = puzzle.answer.toUpperCase();
   const answerSet = useMemo(() => new Set([...answer]), [answer]);
 
@@ -40,13 +40,32 @@ export default function Semantics() {
   const [toast, setToast] = useState("");
   const [checking, setChecking] = useState(false);
   const [etymology, setEtymology] = useState(null);
+  const [modernDef, setModernDef] = useState("");
   const listEndRef = useRef(null);
 
   useEffect(() => {
     if (gameState !== "playing") {
       fetchDefinitions(answer).then(setEtymology).catch(() => {});
+      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${answer.toLowerCase()}`)
+        .then((r) => r.ok ? r.json() : null)
+        .then((data) => {
+          if (!data) return;
+          const def = data[0]?.meanings?.[0]?.definitions?.[0]?.definition;
+          if (def) setModernDef(def);
+        })
+        .catch(() => {});
     }
   }, [gameState, answer]);
+
+  const nextPuzzle = () => {
+    setPuzzleIndex((i) => i + 1);
+    setGuesses([]);
+    setInput("");
+    setGameState("playing");
+    setEtymology(null);
+    setModernDef("");
+    setCopied(false);
+  };
 
   const explores = guesses.filter((g) => g.mode === "explore").length;
   const solves = guesses.filter((g) => g.mode === "solve").length;
@@ -219,7 +238,7 @@ export default function Semantics() {
       )
       .join("");
     navigator.clipboard?.writeText(
-      `Σ Semantics #${puzzleNum} ${gameState === "won" ? guesses.length : "X"}/${MAX_EXPLORES + MAX_SOLVES}\n${icons}\n"${puzzle.clue}"`
+      `Σ Semantics ${gameState === "won" ? guesses.length : "X"}/${MAX_EXPLORES + MAX_SOLVES}\n${icons}\n"${puzzle.clue}"`
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
@@ -257,14 +276,24 @@ export default function Semantics() {
             <span style={S.sigma}>Σ</span>
             <h1 style={S.title}>Semantics</h1>
           </div>
-          <div style={S.meta}>No. {puzzleNum}</div>
           <div style={S.rule} />
         </div>
 
-        {/* Clue */}
+        {/* Clue + Timeline hints together */}
         <div style={S.clueCard}>
           <div style={S.clueLabel}>Ancient Meaning</div>
           <div style={S.clueText}>"{puzzle.clue}"</div>
+          {visibleHints > 0 && gameState === "playing" && (
+            <div style={S.inlineHints}>
+              <div style={S.hintsRule} />
+              {puzzle.hints.slice(0, visibleHints).map((h, i) => (
+                <div key={i} className="sem-row" style={S.hintCard}>
+                  <span style={S.hintEra}>{h.era}</span>
+                  <span style={S.hintDef}>"{h.def}"</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Assembling word */}
@@ -336,7 +365,7 @@ export default function Semantics() {
               }}
             >
               <span style={S.actionLabel}>{checking ? "Checking…" : "Explore"}</span>
-              <span style={S.actionDesc}>All letters uncovered</span>
+              <span style={S.actionDesc}>Checks which letters match</span>
               <span style={S.actionMeta}>
                 Max {currentExploreCap} letters · {MAX_EXPLORES - explores} left
               </span>
@@ -352,7 +381,7 @@ export default function Semantics() {
               }}
             >
               <span style={S.actionLabel}>Solve</span>
-              <span style={S.actionDesc}>1 letter uncovered if wrong</span>
+              <span style={S.actionDesc}>Guess the answer, 1 hint if wrong</span>
               <span style={S.actionMeta}>
                 Any length · {MAX_SOLVES - solves} left
               </span>
@@ -424,25 +453,10 @@ export default function Semantics() {
                       })}
                     </span>
                   </div>
-                  {won && <div style={S.winLine}>You traced the drift</div>}
                 </div>
               );
             })}
             <div ref={listEndRef} />
-          </div>
-        )}
-
-        {/* Timeline hints */}
-        {visibleHints > 0 && gameState === "playing" && (
-          <div style={S.hintsArea}>
-            <div style={S.hintsRule} />
-            <div style={S.hintsLabel}>The meaning evolved…</div>
-            {puzzle.hints.slice(0, visibleHints).map((h, i) => (
-              <div key={i} className="sem-row" style={S.hintCard}>
-                <span style={S.hintEra}>{h.era}</span>
-                <span style={S.hintDef}>"{h.def}"</span>
-              </div>
-            ))}
           </div>
         )}
 
@@ -455,16 +469,19 @@ export default function Semantics() {
               {gameState === "won" ? "🏛️" : "📜"}
             </div>
             <div style={S.resLabel}>
-              {gameState === "won" ? "You traced the drift." : "The word was"}
+              {gameState === "won" ? "" : "The word was"}
             </div>
             <div style={S.resWord}>{answer}</div>
             <div style={S.resJourney}>
               <span style={S.journeyOld}>"{puzzle.clue}"</span>
               <span style={S.journeyArrow}>↓</span>
-              <span style={S.journeyNew}>
-                {answer.charAt(0) + answer.slice(1).toLowerCase()} — as we know
-                it today
-              </span>
+              {modernDef ? (
+                <span style={S.journeyNew}>"{modernDef}"</span>
+              ) : (
+                <span style={S.journeyNew}>
+                  {answer.charAt(0) + answer.slice(1).toLowerCase()} — as we know it today
+                </span>
+              )}
             </div>
             {etymology && (etymology.obsolete.length > 0 || etymology.archaic.length > 0) && (
               <div style={S.etymologySection}>
@@ -494,10 +511,10 @@ export default function Semantics() {
                 {copied ? "Copied ✓" : "Share result"}
               </button>
               <button
-                onClick={() => setGameState("playing")}
+                onClick={nextPuzzle}
                 style={{ ...S.shareBtn, color: "#a8d898", borderColor: "rgba(106,158,90,.22)" }}
               >
-                Continue
+                Next word
               </button>
             </div>
           </div>
@@ -559,9 +576,6 @@ export default function Semantics() {
           </div>
         )}
 
-        <div style={S.footer}>
-          σημαντικός · meaning drifts · language lives
-        </div>
       </div>
     </div>
   );
@@ -617,13 +631,6 @@ const S = {
     margin: 0,
     letterSpacing: ".08em",
     color: "#e8d8b4",
-    textTransform: "uppercase",
-  },
-  meta: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 11,
-    color: "#6a6050",
-    letterSpacing: ".14em",
     textTransform: "uppercase",
   },
 
@@ -788,8 +795,32 @@ const S = {
     fontStyle: "italic",
   },
 
-  hintsArea: {
-    width: "100%",
+  modernDefRow: {
+    marginTop: 12,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 4,
+  },
+  modernDefLabel: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: ".1em",
+    textTransform: "uppercase",
+    color: "#a8d898",
+  },
+  modernDefText: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 12,
+    fontStyle: "italic",
+    fontWeight: 500,
+    color: "#a8d898",
+    lineHeight: 1.4,
+    opacity: 0.7,
+  },
+  inlineHints: {
+    marginTop: 12,
     display: "flex",
     flexDirection: "column",
     gap: 5,
@@ -975,12 +1006,4 @@ const S = {
   },
   kbWide: { flex: 1.5, maxWidth: 50, fontSize: 17 },
 
-  footer: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 10,
-    color: "#3a3630",
-    fontStyle: "italic",
-    marginTop: 2,
-    letterSpacing: ".06em",
-  },
 };
