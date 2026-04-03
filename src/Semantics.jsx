@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import PUZZLES, { getPuzzleByIndex, getDailyPuzzle, getPuzzleNumber } from "./puzzles";
 import { isWord, initializeCache } from "./services/wordValidation";
 import { fetchDefinitions } from "./services/definitionsApi";
+import { getStats, recordStreakResult, recordDailyResult, getDailyResult } from "./services/gameStats";
 
 initializeCache(PUZZLES);
 
@@ -33,6 +34,10 @@ export default function Semantics({ mode = "streak", onBack }) {
   const [streakIndex, setStreakIndex] = useState(0);
   const [streak, setStreak] = useState(0);
   const [streakOver, setStreakOver] = useState(false);
+  const [streakBest, setStreakBest] = useState(() => getStats().streakBest);
+
+  const dayNumber = getPuzzleNumber();
+  const [dailyAlreadyDone] = useState(() => mode === "daily" ? getDailyResult(dayNumber) : null);
 
   const puzzle = mode === "daily"
     ? getDailyPuzzle()
@@ -65,9 +70,18 @@ export default function Semantics({ mode = "streak", onBack }) {
     }
   }, [gameState, answer]);
 
+  // Record daily result when game ends
+  useEffect(() => {
+    if (mode === "daily" && (gameState === "won" || gameState === "lost")) {
+      recordDailyResult({ dayNumber, won: gameState === "won", guesses: guesses.length });
+    }
+  }, [gameState]);
+
   const nextPuzzle = () => {
     if (mode === "streak") {
       if (gameState === "lost") {
+        const stats = recordStreakResult(streak);
+        setStreakBest(stats.streakBest);
         setStreakOver(true);
         return;
       }
@@ -306,8 +320,26 @@ export default function Semantics({ mode = "streak", onBack }) {
           <div style={S.rule} />
         </div>
 
+        {/* Daily already completed */}
+        {mode === "daily" && dailyAlreadyDone && (
+          <div style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
+            <div style={{ fontSize: 28 }}>{dailyAlreadyDone.won ? "🏛️" : "📜"}</div>
+            <div style={S.resLabel}>
+              {dailyAlreadyDone.won ? "You solved today's puzzle" : "Today's word was"}
+            </div>
+            <div style={S.resWord}>{answer}</div>
+            <div style={S.resScore}>
+              {dailyAlreadyDone.guesses} guess{dailyAlreadyDone.guesses !== 1 ? "es" : ""}
+            </div>
+            <div style={{ ...S.journeyOld, marginTop: 4 }}>Come back tomorrow for a new word</div>
+            <button onClick={onBack} style={S.shareBtn}>
+              Back to menu
+            </button>
+          </div>
+        )}
+
         {/* Clue + Timeline hints together */}
-        <div style={S.clueCard}>
+        {!(mode === "daily" && dailyAlreadyDone) && <div style={S.clueCard}>
           <div style={S.clueLabel}>Ancient Meaning</div>
           <div style={S.clueText}>"{puzzle.clue}"</div>
           {visibleHints > 0 && gameState === "playing" && (
@@ -321,8 +353,10 @@ export default function Semantics({ mode = "streak", onBack }) {
               ))}
             </div>
           )}
-        </div>
+        </div>}
 
+        {/* Game UI — hidden when daily already completed */}
+        {!(mode === "daily" && dailyAlreadyDone) && <>
         {/* Assembling word */}
         <div style={S.wordArea}>
           {visibleLetters.length > 0 ? (
@@ -574,6 +608,11 @@ export default function Semantics({ mode = "streak", onBack }) {
             <div style={S.resScore}>
               {streak === 1 ? "1 word solved" : `${streak} words solved in a row`}
             </div>
+            {streakBest > 0 && (
+              <div style={{ ...S.journeyOld, marginTop: 2 }}>
+                Best ever: {streakBest}
+              </div>
+            )}
             <button onClick={onBack} style={S.shareBtn}>
               Back to menu
             </button>
@@ -635,6 +674,7 @@ export default function Semantics({ mode = "streak", onBack }) {
             ))}
           </div>
         )}
+        </>}
 
       </div>
     </div>

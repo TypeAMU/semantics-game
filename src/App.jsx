@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import Semantics from './Semantics'
 import HowToPlay from './HowToPlay'
+import { getStats, getDailyResult } from './services/gameStats'
+import { getPuzzleNumber } from './puzzles'
 
 export default function App() {
   const [screen, setScreen] = useState('menu') // 'menu' | 'daily' | 'streak' | 'howto'
+  const stats = getStats()
+  const todayDone = getDailyResult(getPuzzleNumber())
 
   if (screen === 'howto') {
     return <HowToPlay onBack={() => setScreen('menu')} />
@@ -43,6 +47,11 @@ export default function App() {
             <span style={S.cardIcon}>📜</span>
             <span style={S.cardTitle}>Daily Puzzle</span>
             <span style={S.cardDesc}>One word per day. Come back tomorrow for a new one.</span>
+            {todayDone && (
+              <span style={{ ...S.cardStat, color: todayDone.won ? '#a8d898' : '#b8988a' }}>
+                {todayDone.won ? 'Completed' : 'Attempted'}
+              </span>
+            )}
           </button>
 
           <button
@@ -53,6 +62,9 @@ export default function App() {
             <span style={S.cardIcon}>🔥</span>
             <span style={S.cardTitle}>Streak</span>
             <span style={S.cardDesc}>Solve as many as you can in a row. One loss ends it all.</span>
+            {stats.streakBest > 0 && (
+              <span style={S.cardStat}>Best: {stats.streakBest}</span>
+            )}
           </button>
 
           <button
@@ -167,5 +179,13 @@ const S = {
     fontStyle: 'italic',
     color: '#8a7d60',
     lineHeight: 1.4,
+  },
+  cardStat: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: '.08em',
+    color: '#b88e4a',
+    marginTop: 2,
   },
 }
