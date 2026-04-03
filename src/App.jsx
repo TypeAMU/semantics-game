@@ -51,7 +51,6 @@ export default function App() {
             <span style={S.sigma}>Σ</span>
             <h1 className="menu-title" style={S.title}>Semantics</h1>
           </div>
-          <p className="menu-subtitle" style={S.subtitle}>Words change meaning. Can you guess the modern word from its ancient definition?</p>
           <div style={S.rule} />
         </div>
 

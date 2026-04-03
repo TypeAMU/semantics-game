@@ -339,9 +339,6 @@ export default function Semantics({ mode = "streak", onBack }) {
               <button onClick={onBack} style={S.backBtn}>&larr;</button>
             )}
             <div style={{ flex: 1 }} />
-            {mode === "daily" && (
-              <span style={S.modeTag}>Day #{getPuzzleNumber()}</span>
-            )}
             {mode === "streak" && (
               <span style={S.modeTag}>Streak: {streak}</span>
             )}
@@ -403,7 +400,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                     fontSize: wordFontSize,
                     color: lt.found
                       ? allFound ? "#b8daa8" : "#a8d898"
-                      : "rgba(184,142,74,.5)",
+                      : "#b8944a",
                     textShadow: lt.found
                       ? allFound
                         ? "0 0 16px rgba(168,216,152,.3)"
@@ -423,7 +420,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                   key={i}
                   style={{
                     fontSize: wordFontSize,
-                    color: "rgba(184,142,74,.5)",
+                    color: "#b8944a",
                     letterSpacing: ".08em",
                   }}
                 >
