@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import PUZZLES, { getPuzzleByIndex } from "./puzzles";
+import PUZZLES, { getPuzzleByIndex, getDailyPuzzle, getPuzzleNumber } from "./puzzles";
 import { isWord, initializeCache } from "./services/wordValidation";
 import { fetchDefinitions } from "./services/definitionsApi";
 
@@ -19,9 +19,24 @@ function getVisibleWord(answer, keyStates) {
   return [...answer].map((ch) => ({ ch, found: found.has(ch) }));
 }
 
-export default function Semantics() {
-  const [puzzleIndex, setPuzzleIndex] = useState(0);
-  const puzzle = getPuzzleByIndex(puzzleIndex);
+function getRandomIndices(count) {
+  const indices = Array.from({ length: PUZZLES.length }, (_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return indices.slice(0, count);
+}
+
+export default function Semantics({ mode = "streak", onBack }) {
+  const [streakOrder] = useState(() => getRandomIndices(PUZZLES.length));
+  const [streakIndex, setStreakIndex] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [streakOver, setStreakOver] = useState(false);
+
+  const puzzle = mode === "daily"
+    ? getDailyPuzzle()
+    : PUZZLES[streakOrder[streakIndex % streakOrder.length]];
   const answer = puzzle.answer.toUpperCase();
   const answerSet = useMemo(() => new Set([...answer]), [answer]);
 
@@ -51,7 +66,14 @@ export default function Semantics() {
   }, [gameState, answer]);
 
   const nextPuzzle = () => {
-    setPuzzleIndex((i) => i + 1);
+    if (mode === "streak") {
+      if (gameState === "lost") {
+        setStreakOver(true);
+        return;
+      }
+      setStreak((s) => s + 1);
+      setStreakIndex((i) => i + 1);
+    }
     setGuesses([]);
     setInput("");
     setGameState("playing");
@@ -264,6 +286,18 @@ export default function Semantics() {
       <div style={S.container}>
         {/* Header */}
         <div style={S.header}>
+          <div style={S.headerTop}>
+            {onBack && (
+              <button onClick={onBack} style={S.backBtn}>&larr;</button>
+            )}
+            <div style={{ flex: 1 }} />
+            {mode === "daily" && (
+              <span style={S.modeTag}>Day #{getPuzzleNumber()}</span>
+            )}
+            {mode === "streak" && (
+              <span style={S.modeTag}>Streak: {streak}</span>
+            )}
+          </div>
           <div style={S.rule} />
           <div style={S.titleRow}>
             <span style={S.sigma}>Σ</span>
@@ -503,13 +537,46 @@ export default function Semantics() {
               <button onClick={share} style={S.shareBtn}>
                 {copied ? "Copied ✓" : "Share result"}
               </button>
-              <button
-                onClick={nextPuzzle}
-                style={{ ...S.shareBtn, color: "#a8d898", borderColor: "rgba(106,158,90,.22)" }}
-              >
-                Next word
-              </button>
+              {mode === "daily" && (
+                <button
+                  onClick={onBack}
+                  style={{ ...S.shareBtn, color: "#a8d898", borderColor: "rgba(106,158,90,.22)" }}
+                >
+                  Back to menu
+                </button>
+              )}
+              {mode === "streak" && gameState === "won" && (
+                <button
+                  onClick={nextPuzzle}
+                  style={{ ...S.shareBtn, color: "#a8d898", borderColor: "rgba(106,158,90,.22)" }}
+                >
+                  Next word
+                </button>
+              )}
+              {mode === "streak" && gameState === "lost" && (
+                <button
+                  onClick={onBack}
+                  style={{ ...S.shareBtn, color: "#b8988a", borderColor: "rgba(138,106,90,.22)" }}
+                >
+                  Back to menu
+                </button>
+              )}
             </div>
+          </div>
+        )}
+
+        {/* Streak over overlay */}
+        {mode === "streak" && streakOver && (
+          <div style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
+            <div style={{ fontSize: 28 }}>🔥</div>
+            <div style={S.resLabel}>Streak Over</div>
+            <div style={S.resWord}>{streak}</div>
+            <div style={S.resScore}>
+              {streak === 1 ? "1 word solved" : `${streak} words solved in a row`}
+            </div>
+            <button onClick={onBack} style={S.shareBtn}>
+              Back to menu
+            </button>
           </div>
         )}
 
@@ -999,4 +1066,29 @@ const S = {
   },
   kbWide: { flex: 1.5, maxWidth: 50, fontSize: 17 },
 
+  headerTop: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    minHeight: 24,
+  },
+  backBtn: {
+    background: "none",
+    border: "none",
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 18,
+    color: "#8a7d60",
+    cursor: "pointer",
+    padding: "2px 8px 2px 0",
+    opacity: 0.7,
+  },
+  modeTag: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: ".1em",
+    textTransform: "uppercase",
+    color: "#b88e4a",
+    opacity: 0.7,
+  },
 };

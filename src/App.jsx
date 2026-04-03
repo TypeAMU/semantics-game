@@ -1,5 +1,171 @@
+import { useState } from 'react'
 import Semantics from './Semantics'
+import HowToPlay from './HowToPlay'
 
 export default function App() {
-  return <Semantics />
+  const [screen, setScreen] = useState('menu') // 'menu' | 'daily' | 'streak' | 'howto'
+
+  if (screen === 'howto') {
+    return <HowToPlay onBack={() => setScreen('menu')} />
+  }
+
+  if (screen === 'daily' || screen === 'streak') {
+    return <Semantics mode={screen} onBack={() => setScreen('menu')} />
+  }
+
+  return (
+    <div style={S.page}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+        @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        .menu-btn{transition:transform .08s,border-color .2s,background .2s}
+        .menu-btn:hover{transform:translateY(-2px);border-color:rgba(184,142,74,.35)!important;background:rgba(232,216,180,.06)!important}
+        .menu-btn:active{transform:scale(.97)!important}
+      `}</style>
+
+      <div style={S.container}>
+        <div style={S.header}>
+          <div style={S.rule} />
+          <div style={S.titleRow}>
+            <span style={S.sigma}>Σ</span>
+            <h1 style={S.title}>Semantics</h1>
+          </div>
+          <p style={S.subtitle}>Words change meaning. Can you guess the modern word from its ancient definition?</p>
+          <div style={S.rule} />
+        </div>
+
+        <div style={S.menuCards}>
+          <button
+            className="menu-btn"
+            onClick={() => setScreen('daily')}
+            style={{ ...S.card, animationDelay: '0.05s' }}
+          >
+            <span style={S.cardIcon}>📜</span>
+            <span style={S.cardTitle}>Daily Puzzle</span>
+            <span style={S.cardDesc}>One word per day. Come back tomorrow for a new one.</span>
+          </button>
+
+          <button
+            className="menu-btn"
+            onClick={() => setScreen('streak')}
+            style={{ ...S.card, animationDelay: '0.15s' }}
+          >
+            <span style={S.cardIcon}>🔥</span>
+            <span style={S.cardTitle}>Streak</span>
+            <span style={S.cardDesc}>Solve as many as you can in a row. One loss ends it all.</span>
+          </button>
+
+          <button
+            className="menu-btn"
+            onClick={() => setScreen('howto')}
+            style={{ ...S.card, ...S.cardHowTo, animationDelay: '0.25s' }}
+          >
+            <span style={S.cardIcon}>?</span>
+            <span style={S.cardTitle}>How to Play</span>
+            <span style={S.cardDesc}>Learn the rules and mechanics.</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const S = {
+  page: {
+    minHeight: '100vh',
+    background: 'linear-gradient(178deg, #1c1914 0%, #221e18 50%, #1a1712 100%)',
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '40px 16px',
+    fontFamily: "'Lora', Georgia, serif",
+    color: '#ddd0b8',
+    userSelect: 'none',
+  },
+  container: {
+    width: '100%',
+    maxWidth: 420,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 28,
+  },
+  header: {
+    textAlign: 'center',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 8,
+  },
+  rule: {
+    width: '50%',
+    height: 1,
+    background: 'linear-gradient(90deg, transparent, rgba(184,142,74,.22), transparent)',
+  },
+  titleRow: { display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 8 },
+  sigma: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 28,
+    color: '#b88e4a',
+    opacity: 0.55,
+  },
+  title: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 36,
+    fontWeight: 700,
+    margin: 0,
+    letterSpacing: '.08em',
+    color: '#e8d8b4',
+    textTransform: 'uppercase',
+  },
+  subtitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 14,
+    fontStyle: 'italic',
+    color: '#8a7d60',
+    lineHeight: 1.5,
+    maxWidth: 300,
+    margin: '4px 0 4px',
+  },
+  menuCards: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 12,
+  },
+  card: {
+    width: '100%',
+    background: 'rgba(232,216,180,.03)',
+    border: '1px solid rgba(184,142,74,.15)',
+    borderRadius: 12,
+    padding: '20px 22px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 6,
+    cursor: 'pointer',
+    animation: 'fadeIn .4s ease-out both',
+  },
+  cardHowTo: {
+    background: 'rgba(232,216,180,.015)',
+    border: '1px solid rgba(184,142,74,.08)',
+  },
+  cardIcon: {
+    fontSize: 26,
+    marginBottom: 2,
+  },
+  cardTitle: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 20,
+    fontWeight: 700,
+    letterSpacing: '.06em',
+    color: '#e8d8b4',
+  },
+  cardDesc: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 13,
+    fontStyle: 'italic',
+    color: '#8a7d60',
+    lineHeight: 1.4,
+  },
 }
