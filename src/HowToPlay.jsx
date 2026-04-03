@@ -59,7 +59,7 @@ export default function HowToPlay({ onBack }) {
         <div style={S.section}>
           <h2 style={S.sectionTitle}>Winning & Losing</h2>
           <p style={S.text}>
-            You win by typing the exact answer in either Explore or Solve mode. You lose when all 3 explores and all 3 solves are used up without finding the word.
+            You win by typing the exact answer in either Explore or Solve mode. You lose when all 3 explores and all 3 solves are used up without finding the word. The fewer actions you use, the better your score &mdash; solving on your first try is the best result.
           </p>
         </div>
 

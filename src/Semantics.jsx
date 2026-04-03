@@ -448,12 +448,12 @@ export default function Semantics({ mode = "streak", onBack }) {
           <div className="sem-action-row" style={S.actionRow}>
             <button
               className="action-btn sem-action-btn"
-              disabled={!hasExplores || input.length < 3 || checking}
+              disabled={!hasExplores || checking}
               onClick={() => submit("explore")}
               style={{
                 ...S.actionBtn,
                 ...S.exploreBtn,
-                ...(!hasExplores || input.length < 3 || checking ? S.btnDisabled : {}),
+                ...(!hasExplores || checking ? S.btnDisabled : {}),
               }}
             >
               <span className="sem-action-label" style={S.actionLabel}>{checking ? "Checking…" : "Explore"}</span>
@@ -464,12 +464,12 @@ export default function Semantics({ mode = "streak", onBack }) {
             </button>
             <button
               className="action-btn sem-action-btn"
-              disabled={!hasSolves || input.length < 3 || checking}
+              disabled={!hasSolves || checking}
               onClick={() => submit("solve")}
               style={{
                 ...S.actionBtn,
                 ...S.solveBtn,
-                ...(!hasSolves || input.length < 3 || checking ? S.btnDisabled : {}),
+                ...(!hasSolves || checking ? S.btnDisabled : {}),
               }}
             >
               <span className="sem-action-label" style={S.actionLabel}>Solve</span>
