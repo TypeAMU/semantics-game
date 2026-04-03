@@ -96,14 +96,6 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "SOPHISTICATED",
-    clue: "Adulterated, mixed with a foreign substance",
-    hints: [
-      { era: "1600s", def: "Falsified, altered deceptively" },
-      { era: "1800s", def: "Worldly-wise, cultured, refined in manner" },
-    ],
-  },
-  {
     answer: "EGREGIOUS",
     clue: "Distinguished, eminent; remarkably good",
     hints: [
@@ -197,14 +189,6 @@ const PUZZLES = [
     hints: [
       { era: "1500s", def: "To make a hissing or sputtering sound" },
       { era: "1800s", def: "To fail weakly after a promising start" },
-    ],
-  },
-  {
-    answer: "MANUFACTURE",
-    clue: "To make something by hand, a handmade article",
-    hints: [
-      { era: "1600s", def: "The process of making goods by hand or machinery" },
-      { era: "1800s", def: "To produce goods in large quantities by machine" },
     ],
   },
   {
