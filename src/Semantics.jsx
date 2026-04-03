@@ -403,7 +403,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                     fontSize: wordFontSize,
                     color: lt.found
                       ? allFound ? "#b8daa8" : "#a8d898"
-                      : "rgba(184,142,74,.25)",
+                      : "rgba(184,142,74,.5)",
                     textShadow: lt.found
                       ? allFound
                         ? "0 0 16px rgba(168,216,152,.3)"
@@ -423,7 +423,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                   key={i}
                   style={{
                     fontSize: wordFontSize,
-                    color: "rgba(184,142,74,.25)",
+                    color: "rgba(184,142,74,.5)",
                     letterSpacing: ".08em",
                   }}
                 >
