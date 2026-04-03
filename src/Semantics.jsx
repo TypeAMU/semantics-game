@@ -296,18 +296,39 @@ export default function Semantics({ mode = "streak", onBack }) {
         .action-btn:active{transform:scale(.95)!important}
         .action-btn:disabled{opacity:.3;cursor:default;transform:none!important}
         @media(min-width:768px){
-          .sem-page{padding:32px 24px 48px!important}
-          .sem-container{max-width:560px!important;gap:14px!important}
-          .sem-clue-text{font-size:23px!important}
-          .sem-word-area{min-height:64px!important;padding:12px 20px!important}
-          .sem-action-label{font-size:18px!important}
-          .sem-kb-key{padding:16px 0!important;min-width:36px!important;max-width:44px!important;font-size:15px!important}
+          .sem-page{padding:40px 24px 56px!important}
+          .sem-container{max-width:620px!important;gap:16px!important}
+          .sem-header .sem-sigma{font-size:32px!important}
+          .sem-header .sem-title{font-size:38px!important}
+          .sem-clue-card{padding:20px 28px!important;border-radius:14px!important}
+          .sem-clue-label{font-size:12px!important}
+          .sem-clue-text{font-size:24px!important}
+          .sem-word-area{min-height:72px!important;padding:14px 24px!important;border-radius:14px!important}
+          .sem-input-preview{font-size:18px!important}
+          .sem-action-row{gap:12px!important}
+          .sem-action-btn{padding:14px 12px!important;border-radius:14px!important}
+          .sem-action-label{font-size:20px!important}
+          .sem-action-desc{font-size:12px!important}
+          .sem-action-meta{font-size:11px!important}
+          .sem-guess-row{padding:12px 16px!important;border-radius:10px!important}
+          .sem-mode-badge{font-size:11px!important;padding:3px 10px!important}
+          .sem-row-word{font-size:19px!important}
+          .sem-result-card{padding:28px 24px!important;border-radius:16px!important}
+          .sem-kb{max-width:500px!important;gap:7px!important}
+          .sem-kb-row{gap:6px!important}
+          .sem-kb-key{padding:18px 0!important;min-width:40px!important;max-width:48px!important;font-size:16px!important;border-radius:7px!important}
+        }
+        @media(min-width:1200px){
+          .sem-container{max-width:680px!important;gap:18px!important}
+          .sem-header .sem-title{font-size:42px!important}
+          .sem-clue-text{font-size:26px!important}
+          .sem-kb-key{padding:20px 0!important;min-width:44px!important;max-width:52px!important;font-size:17px!important}
         }
       `}</style>
 
       <div className="sem-container" style={S.container}>
         {/* Header */}
-        <div style={S.header}>
+        <div className="sem-header" style={S.header}>
           <div style={S.headerTop}>
             {onBack && (
               <button onClick={onBack} style={S.backBtn}>&larr;</button>
@@ -322,15 +343,15 @@ export default function Semantics({ mode = "streak", onBack }) {
           </div>
           <div style={S.rule} />
           <div style={S.titleRow}>
-            <span style={S.sigma}>Σ</span>
-            <h1 style={S.title}>Semantics</h1>
+            <span className="sem-sigma" style={S.sigma}>Σ</span>
+            <h1 className="sem-title" style={S.title}>Semantics</h1>
           </div>
           <div style={S.rule} />
         </div>
 
         {/* Daily already completed */}
         {mode === "daily" && dailyAlreadyDone && (
-          <div style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
+          <div className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
             <div style={{ fontSize: 28 }}>{dailyAlreadyDone.won ? "🏛️" : "📜"}</div>
             <div style={S.resLabel}>
               {dailyAlreadyDone.won ? "You solved today's puzzle" : "Today's word was"}
@@ -347,8 +368,8 @@ export default function Semantics({ mode = "streak", onBack }) {
         )}
 
         {/* Clue + Timeline hints together */}
-        {!(mode === "daily" && dailyAlreadyDone) && <div style={S.clueCard}>
-          <div style={S.clueLabel}>Ancient Meaning</div>
+        {!(mode === "daily" && dailyAlreadyDone) && <div className="sem-clue-card" style={S.clueCard}>
+          <div className="sem-clue-label" style={S.clueLabel}>Ancient Meaning</div>
           <div className="sem-clue-text" style={S.clueText}>"{puzzle.clue}"</div>
           {visibleHints > 0 && gameState === "playing" && (
             <div style={S.inlineHints}>
@@ -410,7 +431,7 @@ export default function Semantics({ mode = "streak", onBack }) {
 
         {/* Input preview */}
         {input && gameState === "playing" && (
-          <div style={S.inputPreview}>{input.toUpperCase()}</div>
+          <div className="sem-input-preview" style={S.inputPreview}>{input.toUpperCase()}</div>
         )}
 
         {/* Toast */}
@@ -422,9 +443,9 @@ export default function Semantics({ mode = "streak", onBack }) {
 
         {/* Action buttons */}
         {gameState === "playing" && (
-          <div style={S.actionRow}>
+          <div className="sem-action-row" style={S.actionRow}>
             <button
-              className="action-btn"
+              className="action-btn sem-action-btn"
               disabled={!hasExplores || input.length < 3 || checking}
               onClick={() => submit("explore")}
               style={{
@@ -434,13 +455,13 @@ export default function Semantics({ mode = "streak", onBack }) {
               }}
             >
               <span className="sem-action-label" style={S.actionLabel}>{checking ? "Checking…" : "Explore"}</span>
-              <span style={S.actionDesc}>Checks which letters match</span>
-              <span style={S.actionMeta}>
+              <span className="sem-action-desc" style={S.actionDesc}>Checks which letters match</span>
+              <span className="sem-action-meta" style={S.actionMeta}>
                 Up to {exploreCap} letters · {MAX_EXPLORES - explores} left
               </span>
             </button>
             <button
-              className="action-btn"
+              className="action-btn sem-action-btn"
               disabled={!hasSolves || input.length < 3 || checking}
               onClick={() => submit("solve")}
               style={{
@@ -450,8 +471,8 @@ export default function Semantics({ mode = "streak", onBack }) {
               }}
             >
               <span className="sem-action-label" style={S.actionLabel}>Solve</span>
-              <span style={S.actionDesc}>Guess the answer, 1 hint if wrong</span>
-              <span style={S.actionMeta}>
+              <span className="sem-action-desc" style={S.actionDesc}>Guess the answer, 1 hint if wrong</span>
+              <span className="sem-action-meta" style={S.actionMeta}>
                 Any length · {MAX_SOLVES - solves} left
               </span>
             </button>
@@ -470,7 +491,7 @@ export default function Semantics({ mode = "streak", onBack }) {
               return (
                 <div
                   key={i}
-                  className="sem-row"
+                  className="sem-row sem-guess-row"
                   style={{
                     ...S.guessRow,
                     borderLeftColor: won
@@ -483,6 +504,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                 >
                   <div style={S.rowTop}>
                     <span
+                      className="sem-mode-badge"
                       style={{
                         ...S.modeBadge,
                         background: won
@@ -504,7 +526,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                     >
                       {won ? "✓ solved" : isExplore ? "explore" : "solve"}
                     </span>
-                    <span style={S.rowWordWrap}>
+                    <span className="sem-row-word" style={S.rowWordWrap}>
                       {[...g.word].map((ch, ci) => {
                         let color = "#2a2622";
                         if (isExplore || won) {
@@ -532,7 +554,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         {/* Result */}
         {gameState !== "playing" && (
           <div
-            style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}
+            className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}
           >
             <div style={{ fontSize: 28 }}>
               {gameState === "won" ? "🏛️" : "📜"}
@@ -609,7 +631,7 @@ export default function Semantics({ mode = "streak", onBack }) {
 
         {/* Streak over overlay */}
         {mode === "streak" && streakOver && (
-          <div style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
+          <div className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
             <div style={{ fontSize: 28 }}>🔥</div>
             <div style={S.resLabel}>Streak Over</div>
             <div style={S.resWord}>{streak}</div>
@@ -629,9 +651,9 @@ export default function Semantics({ mode = "streak", onBack }) {
 
         {/* Keyboard */}
         {gameState === "playing" && (
-          <div style={S.keyboard}>
+          <div className="sem-kb" style={S.keyboard}>
             {KB_ROWS.map((row, ri) => (
-              <div key={ri} style={S.kbRow}>
+              <div key={ri} className="sem-kb-row" style={S.kbRow}>
                 {ri === 2 && (
                   <button
                     className="kb-key sem-kb-key"
