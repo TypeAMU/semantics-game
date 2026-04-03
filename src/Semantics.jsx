@@ -277,7 +277,7 @@ export default function Semantics({ mode = "streak", onBack }) {
     visibleLetters.length <= 6 ? 36 : visibleLetters.length <= 10 ? 28 : 22;
 
   return (
-    <div style={S.page}>
+    <div className="sem-page" style={S.page}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
         @keyframes shake{0%,100%{transform:translateX(0)}15%{transform:translateX(-5px)}30%{transform:translateX(5px)}45%{transform:translateX(-3px)}60%{transform:translateX(3px)}}
@@ -295,9 +295,17 @@ export default function Semantics({ mode = "streak", onBack }) {
         .action-btn{transition:transform .08s,opacity .2s}
         .action-btn:active{transform:scale(.95)!important}
         .action-btn:disabled{opacity:.3;cursor:default;transform:none!important}
+        @media(min-width:768px){
+          .sem-page{padding:32px 24px 48px!important}
+          .sem-container{max-width:560px!important;gap:14px!important}
+          .sem-clue-text{font-size:23px!important}
+          .sem-word-area{min-height:64px!important;padding:12px 20px!important}
+          .sem-action-label{font-size:18px!important}
+          .sem-kb-key{padding:16px 0!important;min-width:36px!important;max-width:44px!important;font-size:15px!important}
+        }
       `}</style>
 
-      <div style={S.container}>
+      <div className="sem-container" style={S.container}>
         {/* Header */}
         <div style={S.header}>
           <div style={S.headerTop}>
@@ -341,7 +349,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         {/* Clue + Timeline hints together */}
         {!(mode === "daily" && dailyAlreadyDone) && <div style={S.clueCard}>
           <div style={S.clueLabel}>Ancient Meaning</div>
-          <div style={S.clueText}>"{puzzle.clue}"</div>
+          <div className="sem-clue-text" style={S.clueText}>"{puzzle.clue}"</div>
           {visibleHints > 0 && gameState === "playing" && (
             <div style={S.inlineHints}>
               <div style={S.hintsRule} />
@@ -358,7 +366,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         {/* Game UI — hidden when daily already completed */}
         {!(mode === "daily" && dailyAlreadyDone) && <>
         {/* Assembling word */}
-        <div style={S.wordArea}>
+        <div className="sem-word-area" style={S.wordArea}>
           {visibleLetters.length > 0 ? (
             <div style={S.wordDisplay}>
               {visibleLetters.map((lt, i) => (
@@ -425,7 +433,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                 ...(!hasExplores || input.length < 3 || checking ? S.btnDisabled : {}),
               }}
             >
-              <span style={S.actionLabel}>{checking ? "Checking…" : "Explore"}</span>
+              <span className="sem-action-label" style={S.actionLabel}>{checking ? "Checking…" : "Explore"}</span>
               <span style={S.actionDesc}>Checks which letters match</span>
               <span style={S.actionMeta}>
                 Up to {exploreCap} letters · {MAX_EXPLORES - explores} left
@@ -441,7 +449,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                 ...(!hasSolves || input.length < 3 || checking ? S.btnDisabled : {}),
               }}
             >
-              <span style={S.actionLabel}>Solve</span>
+              <span className="sem-action-label" style={S.actionLabel}>Solve</span>
               <span style={S.actionDesc}>Guess the answer, 1 hint if wrong</span>
               <span style={S.actionMeta}>
                 Any length · {MAX_SOLVES - solves} left
@@ -626,7 +634,7 @@ export default function Semantics({ mode = "streak", onBack }) {
               <div key={ri} style={S.kbRow}>
                 {ri === 2 && (
                   <button
-                    className="kb-key"
+                    className="kb-key sem-kb-key"
                     onClick={() => handleKey("BACKSPACE")}
                     style={{
                       ...S.kbKey,
@@ -643,7 +651,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                   return (
                     <button
                       key={k}
-                      className="kb-key"
+                      className="kb-key sem-kb-key"
                       onClick={() => handleKey(k)}
                       style={{
                         ...S.kbKey,

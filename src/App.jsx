@@ -18,35 +18,44 @@ export default function App() {
   }
 
   return (
-    <div style={S.page}>
+    <div className="menu-page" style={S.page}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
         @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
         .menu-btn{transition:transform .08s,border-color .2s,background .2s}
         .menu-btn:hover{transform:translateY(-2px);border-color:rgba(184,142,74,.35)!important;background:rgba(232,216,180,.06)!important}
         .menu-btn:active{transform:scale(.97)!important}
+        @media(min-width:768px){
+          .menu-page{padding:60px 24px!important}
+          .menu-container{max-width:520px!important;gap:36px!important}
+          .menu-title{font-size:44px!important}
+          .menu-subtitle{font-size:16px!important;max-width:360px!important}
+          .menu-card{padding:26px 28px!important}
+          .menu-card-title{font-size:24px!important}
+          .menu-card-desc{font-size:15px!important}
+        }
       `}</style>
 
-      <div style={S.container}>
+      <div className="menu-container" style={S.container}>
         <div style={S.header}>
           <div style={S.rule} />
           <div style={S.titleRow}>
             <span style={S.sigma}>Σ</span>
-            <h1 style={S.title}>Semantics</h1>
+            <h1 className="menu-title" style={S.title}>Semantics</h1>
           </div>
-          <p style={S.subtitle}>Words change meaning. Can you guess the modern word from its ancient definition?</p>
+          <p className="menu-subtitle" style={S.subtitle}>Words change meaning. Can you guess the modern word from its ancient definition?</p>
           <div style={S.rule} />
         </div>
 
         <div style={S.menuCards}>
           <button
-            className="menu-btn"
+            className="menu-btn menu-card"
             onClick={() => setScreen('daily')}
             style={{ ...S.card, animationDelay: '0.05s' }}
           >
             <span style={S.cardIcon}>📜</span>
-            <span style={S.cardTitle}>Daily Puzzle</span>
-            <span style={S.cardDesc}>One word per day. Come back tomorrow for a new one.</span>
+            <span className="menu-card-title" style={S.cardTitle}>Daily Puzzle</span>
+            <span className="menu-card-desc" style={S.cardDesc}>One word per day. Come back tomorrow for a new one.</span>
             {todayDone && (
               <span style={{ ...S.cardStat, color: todayDone.won ? '#a8d898' : '#b8988a' }}>
                 {todayDone.won ? 'Completed' : 'Attempted'}
@@ -55,26 +64,26 @@ export default function App() {
           </button>
 
           <button
-            className="menu-btn"
+            className="menu-btn menu-card"
             onClick={() => setScreen('streak')}
             style={{ ...S.card, animationDelay: '0.15s' }}
           >
             <span style={S.cardIcon}>🔥</span>
-            <span style={S.cardTitle}>Streak</span>
-            <span style={S.cardDesc}>Solve as many as you can in a row. One loss ends it all.</span>
+            <span className="menu-card-title" style={S.cardTitle}>Streak</span>
+            <span className="menu-card-desc" style={S.cardDesc}>Solve as many as you can in a row. One loss ends it all.</span>
             {stats.streakBest > 0 && (
               <span style={S.cardStat}>Best: {stats.streakBest}</span>
             )}
           </button>
 
           <button
-            className="menu-btn"
+            className="menu-btn menu-card"
             onClick={() => setScreen('howto')}
             style={{ ...S.card, ...S.cardHowTo, animationDelay: '0.25s' }}
           >
             <span style={S.cardIcon}>?</span>
-            <span style={S.cardTitle}>How to Play</span>
-            <span style={S.cardDesc}>Learn the rules and mechanics.</span>
+            <span className="menu-card-title" style={S.cardTitle}>How to Play</span>
+            <span className="menu-card-desc" style={S.cardDesc}>Learn the rules and mechanics.</span>
           </button>
         </div>
       </div>
