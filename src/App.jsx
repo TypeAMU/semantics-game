@@ -26,13 +26,21 @@ export default function App() {
         .menu-btn:hover{transform:translateY(-2px);border-color:rgba(184,142,74,.35)!important;background:rgba(232,216,180,.06)!important}
         .menu-btn:active{transform:scale(.97)!important}
         @media(min-width:768px){
-          .menu-page{padding:60px 24px!important}
-          .menu-container{max-width:520px!important;gap:36px!important}
-          .menu-title{font-size:44px!important}
-          .menu-subtitle{font-size:16px!important;max-width:360px!important}
-          .menu-card{padding:26px 28px!important}
-          .menu-card-title{font-size:24px!important}
-          .menu-card-desc{font-size:15px!important}
+          .menu-page{padding:72px 24px!important}
+          .menu-container{max-width:600px!important;gap:44px!important}
+          .menu-title{font-size:52px!important}
+          .menu-subtitle{font-size:18px!important;max-width:420px!important}
+          .menu-card{padding:30px 32px!important;border-radius:16px!important}
+          .menu-card-title{font-size:28px!important}
+          .menu-card-desc{font-size:17px!important}
+        }
+        @media(min-width:1200px){
+          .menu-container{max-width:680px!important;gap:52px!important}
+          .menu-title{font-size:60px!important}
+          .menu-subtitle{font-size:20px!important;max-width:480px!important}
+          .menu-card{padding:36px 38px!important}
+          .menu-card-title{font-size:32px!important}
+          .menu-card-desc{font-size:18px!important}
         }
       `}</style>
 

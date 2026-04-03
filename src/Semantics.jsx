@@ -296,33 +296,38 @@ export default function Semantics({ mode = "streak", onBack }) {
         .action-btn:active{transform:scale(.95)!important}
         .action-btn:disabled{opacity:.3;cursor:default;transform:none!important}
         @media(min-width:768px){
-          .sem-page{padding:40px 24px 56px!important}
-          .sem-container{max-width:620px!important;gap:16px!important}
-          .sem-header .sem-sigma{font-size:32px!important}
-          .sem-header .sem-title{font-size:38px!important}
-          .sem-clue-card{padding:20px 28px!important;border-radius:14px!important}
-          .sem-clue-label{font-size:12px!important}
-          .sem-clue-text{font-size:24px!important}
-          .sem-word-area{min-height:72px!important;padding:14px 24px!important;border-radius:14px!important}
-          .sem-input-preview{font-size:18px!important}
-          .sem-action-row{gap:12px!important}
-          .sem-action-btn{padding:14px 12px!important;border-radius:14px!important}
-          .sem-action-label{font-size:20px!important}
-          .sem-action-desc{font-size:12px!important}
-          .sem-action-meta{font-size:11px!important}
-          .sem-guess-row{padding:12px 16px!important;border-radius:10px!important}
-          .sem-mode-badge{font-size:11px!important;padding:3px 10px!important}
-          .sem-row-word{font-size:19px!important}
-          .sem-result-card{padding:28px 24px!important;border-radius:16px!important}
-          .sem-kb{max-width:500px!important;gap:7px!important}
-          .sem-kb-row{gap:6px!important}
-          .sem-kb-key{padding:18px 0!important;min-width:40px!important;max-width:48px!important;font-size:16px!important;border-radius:7px!important}
+          .sem-page{padding:48px 24px 64px!important}
+          .sem-container{max-width:720px!important;gap:20px!important}
+          .sem-header .sem-sigma{font-size:38px!important}
+          .sem-header .sem-title{font-size:46px!important}
+          .sem-clue-card{padding:24px 32px!important;border-radius:16px!important}
+          .sem-clue-label{font-size:14px!important}
+          .sem-clue-text{font-size:28px!important}
+          .sem-word-area{min-height:80px!important;padding:18px 28px!important;border-radius:16px!important}
+          .sem-input-preview{font-size:21px!important}
+          .sem-action-row{gap:14px!important}
+          .sem-action-btn{padding:18px 14px!important;border-radius:16px!important}
+          .sem-action-label{font-size:24px!important}
+          .sem-action-desc{font-size:14px!important}
+          .sem-action-meta{font-size:12px!important}
+          .sem-guess-row{padding:14px 18px!important;border-radius:12px!important}
+          .sem-mode-badge{font-size:12px!important;padding:4px 12px!important}
+          .sem-row-word{font-size:22px!important}
+          .sem-result-card{padding:32px 28px!important;border-radius:18px!important}
+          .sem-kb{max-width:580px!important;gap:8px!important}
+          .sem-kb-row{gap:7px!important}
+          .sem-kb-key{padding:20px 0!important;min-width:46px!important;max-width:54px!important;font-size:18px!important;border-radius:8px!important}
         }
         @media(min-width:1200px){
-          .sem-container{max-width:680px!important;gap:18px!important}
-          .sem-header .sem-title{font-size:42px!important}
-          .sem-clue-text{font-size:26px!important}
-          .sem-kb-key{padding:20px 0!important;min-width:44px!important;max-width:52px!important;font-size:17px!important}
+          .sem-container{max-width:800px!important;gap:24px!important}
+          .sem-header .sem-sigma{font-size:44px!important}
+          .sem-header .sem-title{font-size:52px!important}
+          .sem-clue-text{font-size:32px!important}
+          .sem-clue-label{font-size:15px!important}
+          .sem-action-label{font-size:26px!important}
+          .sem-row-word{font-size:24px!important}
+          .sem-kb{max-width:660px!important}
+          .sem-kb-key{padding:22px 0!important;min-width:52px!important;max-width:60px!important;font-size:19px!important}
         }
       `}</style>
 
