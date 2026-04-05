@@ -1,18 +1,11 @@
-import PUZZLES from "./puzzleData";
+import STREAKS from "./streaks";
+import { getDailyPuzzle, getPuzzleNumber } from "./daily";
 
-const dayOffset = Math.floor((new Date() - new Date(2026, 0, 1)) / 86400000);
+export { getDailyPuzzle, getPuzzleNumber };
+export default STREAKS;
 
 export function getPuzzleByIndex(index) {
-  const i = ((dayOffset + index) % PUZZLES.length + PUZZLES.length) % PUZZLES.length;
-  return PUZZLES[i];
+  const dayOffset = Math.floor((new Date() - new Date(2026, 0, 1)) / 86400000);
+  const i = ((dayOffset + index) % STREAKS.length + STREAKS.length) % STREAKS.length;
+  return STREAKS[i];
 }
-
-export function getDailyPuzzle() {
-  return getPuzzleByIndex(0);
-}
-
-export function getPuzzleNumber() {
-  return dayOffset + 1;
-}
-
-export default PUZZLES;

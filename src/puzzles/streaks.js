@@ -1,6 +1,8 @@
-const PUZZLES = [
+import { decode } from "./obfuscate";
+
+const STREAKS = [
   {
-    answer: "NICE",
+    answer: decode("TklDRQ=="),
     clue: "Foolish, ignorant, simple-minded",
     hints: [
       { era: "1400s", def: "Fussy, fastidious about small details" },
@@ -8,7 +10,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "AWFUL",
+    answer: decode("QVdGVUw="),
     clue: "Inspiring great awe, worthy of deep reverence",
     hints: [
       { era: "1500s", def: "Solemnly impressive, awe-inspiring" },
@@ -16,7 +18,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "SILLY",
+    answer: decode("U0lMTFk="),
     clue: "Blessed, holy, spiritually fortunate",
     hints: [
       { era: "1400s", def: "Weak, helpless, defenseless" },
@@ -24,7 +26,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "BULLY",
+    answer: decode("QlVMTFk="),
     clue: "Sweetheart, darling, a term of endearment",
     hints: [
       { era: "1570s", def: "A fine fellow, a good friend" },
@@ -32,7 +34,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "CLOUD",
+    answer: decode("Q0xPVUQ="),
     clue: "A mass of rock; a hill, a rocky outcrop",
     hints: [
       { era: "1200s", def: "A mass of earth or clay; a lump" },
@@ -40,7 +42,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "CLUE",
+    answer: decode("Q0xVRQ=="),
     clue: "A ball of thread or yarn",
     hints: [
       { era: "1500s", def: "A thread guiding one through a labyrinth" },
@@ -48,7 +50,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "MEAT",
+    answer: decode("TUVBVA=="),
     clue: "Any solid food of any kind, as opposed to drink",
     hints: [
       { era: "1300s", def: "A particular kind or article of food" },
@@ -56,7 +58,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "GOSSIP",
+    answer: decode("R09TU0lQ"),
     clue: "A godparent; a sponsor in baptism",
     hints: [
       { era: "1300s", def: "A close friend, a companion at a birth" },
@@ -64,7 +66,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "NAUGHTY",
+    answer: decode("TkFVR0hUWQ=="),
     clue: "Having nothing; poor, needy, destitute",
     hints: [
       { era: "1400s", def: "Wicked, morally bad, evil in character" },
@@ -72,7 +74,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "NERVOUS",
+    answer: decode("TkVSVk9VUw=="),
     clue: "Sinewy, muscular, possessing great physical strength",
     hints: [
       { era: "1500s", def: "Vigorous, powerful, full of force" },
@@ -80,7 +82,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "EXPLODE",
+    answer: decode("RVhQTE9ERQ=="),
     clue: "To drive a performer off stage by clapping and hooting",
     hints: [
       { era: "1600s", def: "To reject with scorn; to hiss off" },
@@ -88,7 +90,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "BROADCAST",
+    answer: decode("QlJPQURDQVNU"),
     clue: "To scatter seeds broadly across a field by hand",
     hints: [
       { era: "1800s", def: "To spread widely, as news or information" },
@@ -96,7 +98,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "EGREGIOUS",
+    answer: decode("RUdSRUdJT1VT"),
     clue: "Distinguished, eminent; remarkably good",
     hints: [
       { era: "1570s", def: "Standing out from the flock; preeminent" },
@@ -104,7 +106,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "GIRL",
+    answer: decode("R0lSTA=="),
     clue: "A child or young person of either sex",
     hints: [
       { era: "1400s", def: "A female child; also a serving-maid" },
@@ -112,7 +114,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "CUNNING",
+    answer: decode("Q1VOTklORw=="),
     clue: "Possessing knowledge, learned, skillful",
     hints: [
       { era: "1400s", def: "Possessing magical knowledge or skill" },
@@ -120,7 +122,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "VILLAIN",
+    answer: decode("VklMTEFJTg=="),
     clue: "A peasant farmer bound to a feudal lord's estate",
     hints: [
       { era: "1300s", def: "A lowborn rustic, a person of base birth" },
@@ -128,7 +130,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "HOUND",
+    answer: decode("SE9VTkQ="),
     clue: "Any dog whatsoever, regardless of breed",
     hints: [
       { era: "1200s", def: "A dog kept for hunting game" },
@@ -136,7 +138,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "DEER",
+    answer: decode("REVFUg=="),
     clue: "Any animal, any living creature that is not human",
     hints: [
       { era: "1200s", def: "A wild animal hunted for sport" },
@@ -144,7 +146,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "STARVE",
+    answer: decode("U1RBUlZF"),
     clue: "To die, from any cause whatsoever",
     hints: [
       { era: "1300s", def: "To die slowly, especially from cold" },
@@ -152,7 +154,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "PRETTY",
+    answer: decode("UFJFVFRZ"),
     clue: "Cunning, crafty, wily in dealings",
     hints: [
       { era: "1400s", def: "Clever, skillfully made, ingenious" },
@@ -160,7 +162,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "BRAVE",
+    answer: decode("QlJBVkU="),
     clue: "Showy, gaudy, finely dressed",
     hints: [
       { era: "1500s", def: "Splendid, handsome, making a fine display" },
@@ -168,7 +170,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "MARSHAL",
+    answer: decode("TUFSU0hBTA=="),
     clue: "A servant who tends to horses",
     hints: [
       { era: "1300s", def: "An officer in charge of a royal household" },
@@ -176,7 +178,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "HAZARD",
+    answer: decode("SEFaQVJE"),
     clue: "A game of dice played for stakes",
     hints: [
       { era: "1400s", def: "A chance, a stroke of luck or fortune" },
@@ -184,7 +186,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "FIZZLE",
+    answer: decode("RklaWkxF"),
     clue: "To break wind silently",
     hints: [
       { era: "1500s", def: "To make a hissing or sputtering sound" },
@@ -192,7 +194,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "TREACLE",
+    answer: decode("VFJFQUNMRQ=="),
     clue: "An antidote against venom or poison",
     hints: [
       { era: "1400s", def: "A medicinal compound, a healing remedy" },
@@ -200,7 +202,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "PASSENGER",
+    answer: decode("UEFTU0VOR0VS"),
     clue: "A passer-by, one who passes through a place on foot",
     hints: [
       { era: "1400s", def: "A traveler, a wayfarer on a journey" },
@@ -208,7 +210,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "LUXURY",
+    answer: decode("TFVYVVJZ"),
     clue: "Lust, lechery, sinful indulgence of the flesh",
     hints: [
       { era: "1400s", def: "Lasciviousness, habitual indulgence in pleasure" },
@@ -216,7 +218,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "ALCOHOL",
+    answer: decode("QUxDT0hPTA=="),
     clue: "A very fine powder, especially antimony used as eyeliner",
     hints: [
       { era: "1600s", def: "The pure essence or spirit of any substance" },
@@ -224,7 +226,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "AMATEUR",
+    answer: decode("QU1BVEVVUg=="),
     clue: "A lover of something; one who pursues it for love alone",
     hints: [
       { era: "1800s", def: "One who cultivates a pursuit without doing it professionally" },
@@ -232,7 +234,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "ALBUM",
+    answer: decode("QUxCVU0="),
     clue: "A white tablet on which public notices and edicts are recorded",
     hints: [
       { era: "1600s", def: "A book of blank pages for collecting autographs or memorabilia" },
@@ -240,7 +242,7 @@ const PUZZLES = [
     ],
   },
   {
-    answer: "ATLAS",
+    answer: decode("QVRMQVM="),
     clue: "A rich satin fabric",
     hints: [
       { era: "1500s", def: "A figure bearing a great weight upon his shoulders" },
@@ -249,4 +251,4 @@ const PUZZLES = [
   },
 ];
 
-export default PUZZLES;
+export default STREAKS;

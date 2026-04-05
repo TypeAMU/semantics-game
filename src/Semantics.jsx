@@ -340,7 +340,12 @@ export default function Semantics({ mode = "streak", onBack }) {
             )}
             <div style={{ flex: 1 }} />
             {mode === "streak" && (
-              <span style={S.modeTag}>Streak: {streak}</span>
+              <div style={{ textAlign: "right" }}>
+                <span style={S.modeTag}>Streak: {streak}</span>
+                {streakBest > 0 && (
+                  <div style={S.bestTag}>Best: {streakBest}</div>
+                )}
+              </div>
             )}
           </div>
           <div style={S.rule} />
@@ -1162,5 +1167,15 @@ const S = {
     textTransform: "uppercase",
     color: "#b88e4a",
     opacity: 0.7,
+  },
+  bestTag: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 9,
+    fontWeight: 600,
+    letterSpacing: ".08em",
+    textTransform: "uppercase",
+    color: "#8a7d60",
+    opacity: 0.5,
+    marginTop: 2,
   },
 };
