@@ -359,7 +359,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         {/* Daily already completed */}
         {mode === "daily" && dailyAlreadyDone && (
           <div className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
-            <div style={{ fontSize: 28 }}>{dailyAlreadyDone.won ? "🏛️" : "📜"}</div>
+            <div style={S.resultGlyph}>{dailyAlreadyDone.won ? "⁂" : "†"}</div>
             <div style={S.resLabel}>
               {dailyAlreadyDone.won ? "You solved today's puzzle" : "Today's word was"}
             </div>
@@ -563,8 +563,8 @@ export default function Semantics({ mode = "streak", onBack }) {
           <div
             className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}
           >
-            <div style={{ fontSize: 28 }}>
-              {gameState === "won" ? "🏛️" : "📜"}
+            <div style={S.resultGlyph}>
+              {gameState === "won" ? "⁂" : "†"}
             </div>
             <div style={S.resLabel}>
               {gameState === "won" ? "" : "The word was"}
@@ -639,7 +639,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         {/* Streak over overlay */}
         {mode === "streak" && streakOver && (
           <div className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
-            <div style={{ fontSize: 28 }}>🔥</div>
+            <div style={S.resultGlyph}>❧</div>
             <div style={S.resLabel}>Streak Over</div>
             <div style={S.resWord}>{streak}</div>
             <div style={S.resScore}>
@@ -1017,6 +1017,14 @@ const S = {
     flexDirection: "column",
     alignItems: "center",
     gap: 7,
+  },
+  resultGlyph: {
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 36,
+    lineHeight: 1,
+    color: "#b88e4a",
+    opacity: 0.75,
+    letterSpacing: ".08em",
   },
   resLabel: {
     fontFamily: "'Cormorant Garamond', serif",

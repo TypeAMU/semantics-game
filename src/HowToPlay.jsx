@@ -67,7 +67,7 @@ export default function HowToPlay({ onBack }) {
           <h2 style={S.sectionTitle}>Game Modes</h2>
 
           <div style={S.modeRow}>
-            <span style={S.modeIcon}>📜</span>
+            <span style={S.modeIcon}>❦</span>
             <div>
               <span style={S.modeName}>Daily Puzzle</span>
               <p style={S.modeDesc}>A new word every day. Same word for everyone.</p>
@@ -75,7 +75,7 @@ export default function HowToPlay({ onBack }) {
           </div>
 
           <div style={S.modeRow}>
-            <span style={S.modeIcon}>🔥</span>
+            <span style={S.modeIcon}>❧</span>
             <div>
               <span style={S.modeName}>Streak</span>
               <p style={S.modeDesc}>Solve as many puzzles in a row as you can. One loss ends your streak.</p>
@@ -202,7 +202,11 @@ const S = {
     padding: '8px 0',
   },
   modeIcon: {
-    fontSize: 22,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 28,
+    lineHeight: 1,
+    color: '#b88e4a',
+    opacity: 0.75,
     flexShrink: 0,
     marginTop: 2,
   },

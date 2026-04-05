@@ -60,12 +60,17 @@ export default function App() {
             onClick={() => setScreen('daily')}
             style={{ ...S.card, animationDelay: '0.05s' }}
           >
-            <span style={S.cardIcon}>📜</span>
+            <span style={S.cardIcon}>❦</span>
             <span className="menu-card-title" style={S.cardTitle}>Daily Puzzle</span>
             <span className="menu-card-desc" style={S.cardDesc}>One word per day. Come back tomorrow for a new one.</span>
             {todayDone && (
               <span style={{ ...S.cardStat, color: todayDone.won ? '#a8d898' : '#b8988a' }}>
                 {todayDone.won ? 'Completed' : 'Attempted'}
+              </span>
+            )}
+            {stats.dailyBestStreak > 0 && (
+              <span style={S.cardStat}>
+                Best: {stats.dailyBestStreak} day{stats.dailyBestStreak !== 1 ? 's' : ''}
               </span>
             )}
           </button>
@@ -75,7 +80,7 @@ export default function App() {
             onClick={() => setScreen('streak')}
             style={{ ...S.card, animationDelay: '0.15s' }}
           >
-            <span style={S.cardIcon}>🔥</span>
+            <span style={S.cardIcon}>❧</span>
             <span className="menu-card-title" style={S.cardTitle}>Streak</span>
             <span className="menu-card-desc" style={S.cardDesc}>Solve as many as you can in a row. One loss ends it all.</span>
             {stats.streakBest > 0 && (
@@ -179,8 +184,12 @@ const S = {
     border: '1px solid rgba(184,142,74,.08)',
   },
   cardIcon: {
-    fontSize: 26,
-    marginBottom: 2,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 34,
+    lineHeight: 1,
+    color: '#b88e4a',
+    opacity: 0.75,
+    marginBottom: 4,
   },
   cardTitle: {
     fontFamily: "'Cormorant Garamond', serif",
