@@ -6,7 +6,7 @@
 
 Example: the clue "Foolish, ignorant, simple-minded" → answer is **NICE** (which meant "foolish" in the 1300s).
 
-## Current state (2026-04-04)
+## Current state (2026-04-05)
 
 ### What's working
 - Full game loop: explore (reveal letters) + solve (guess answer), 3 of each = 6 max actions
@@ -14,8 +14,18 @@ Example: the clue "Foolish, ignorant, simple-minded" → answer is **NICE** (whi
 - Timeline hints appear after 3 and 5 actions showing how the word's meaning evolved
 - Post-game: etymology from Wiktionary API, modern definition from Free Dictionary API
 - Stats in localStorage: streak best, daily completion history, daily consecutive streak
-- Best-streak counter shown in streak mode header (small sub-line below live count)
+- **Streak best** shown on menu Streak card and on streak-over splash
+- **Daily best streak** now surfaced on menu Daily card ("Best: N days") — value was tracked but previously not displayed (fixed 2026-04-05)
 - Deployed to semantics.fyi via GitHub Pages (`.github/workflows/deploy.yml`)
+
+### Visual theme (updated 2026-04-05)
+The aesthetic was reworked from "warm dark parchment" to **"brilliant gold inlaid on hefty wood"**:
+- Primary gold: `#e8c458` (was `#b88e4a`) — brilliant gold-leaf tone, used on fleurons, section headings, borders, logo
+- Heading/title text: `#f0d89a` (was `#e8d8b4`) — warmer, more golden
+- Page background: radial "Obsidian & ember" gradient `#181410 → #0e0a06 → #050302` on all three pages + `index.css` body (was a dark-brown linear gradient)
+- Explore/Solve buttons restyled as **wood plaques**: layered dark-walnut gradient background (`#1f1a12 → #141009 → #0a0704`), gold trim on Explore, sage-green trim on Solve, inset top highlight + drop shadow, uppercased Cormorant labels with 1px engraved shadow, hover lifts 1px + brightens 15%
+- Underscore placeholders (`_______`) now render in vibrant gold with a soft gold glow + dark 1px drop so they read as inlaid carving
+- **Emojis replaced with typographic fleurons** rendered in Cormorant Garamond: 📜 → `❦` (daily), 🔥 → `❧` (streak), 🏛️ → `⁂` (won), 📜(loss) → `†` (lost). Seven locations total across App.jsx / HowToPlay.jsx / Semantics.jsx.
 
 ### Puzzle architecture (recently restructured)
 The puzzle system uses a **streaks/daily/incoming** pattern:
@@ -104,7 +114,7 @@ npm run preview      # Preview production build locally
 
 ## Key patterns
 
-- **No CSS framework**: All styling is inline JS objects (the `S` const at bottom of each component). Warm dark parchment aesthetic: dark browns (#1c1914), golds (#b88e4a), sepia text (#ddd0b8). Fonts: Cormorant Garamond (headings) + Lora (body).
+- **No CSS framework**: All styling is inline JS objects (the `S` const at bottom of each component). "Gold on obsidian" aesthetic: near-black warm backgrounds (`#181410` radial), brilliant gold accents (`#e8c458`), sepia body text (`#ddd0b8`), warmer gold headings (`#f0d89a`). Fonts: Cormorant Garamond (headings) + Lora (body).
 - **Responsive**: CSS media queries in `<style>` tags for 768px and 1200px breakpoints. Desktop gets larger fonts, keys, and containers.
 - **API caching**: `apiCache.js` provides a `createCache({ ttl, persistKey })` factory. Deduplicates in-flight requests. Word validation cache is in-memory only; definitions cache persists to localStorage with 24h TTL.
 - **Daily puzzle determinism**: `dayOffset = Math.floor((new Date() - new Date(2026, 0, 1)) / 86400000)`. Puzzle = `STREAKS[dayOffset % STREAKS.length]`. Same puzzle for all users on same day.
