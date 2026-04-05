@@ -289,7 +289,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         .word-letter{display:inline-block;animation:letterPop .35s ease-out both}
         .sem-guess-list::-webkit-scrollbar{width:3px}
         .sem-guess-list::-webkit-scrollbar-track{background:transparent}
-        .sem-guess-list::-webkit-scrollbar-thumb{background:rgba(184,142,74,.15);border-radius:3px}
+        .sem-guess-list::-webkit-scrollbar-thumb{background:rgba(212,169,78,.15);border-radius:3px}
         .kb-key{transition:transform .06s,background .2s}
         .kb-key:active{transform:scale(.9)!important}
         .action-btn{transition:transform .08s,opacity .2s}
@@ -504,7 +504,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                     borderLeftColor: won
                       ? "#7aaa5e"
                       : isExplore
-                      ? "#b88e4a"
+                      ? "#d4a94e"
                       : "#8a6a5a",
                     background: won ? "rgba(106,158,90,.07)" : undefined,
                   }}
@@ -517,7 +517,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                         background: won
                           ? "rgba(106,158,90,.15)"
                           : isExplore
-                          ? "rgba(184,142,74,.12)"
+                          ? "rgba(212,169,78,.12)"
                           : "rgba(138,106,90,.12)",
                         color: won
                           ? "#a8d898"
@@ -527,7 +527,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                         borderColor: won
                           ? "rgba(106,158,90,.25)"
                           : isExplore
-                          ? "rgba(184,142,74,.2)"
+                          ? "rgba(212,169,78,.2)"
                           : "rgba(138,106,90,.2)",
                       }}
                     >
@@ -592,7 +592,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                 ))}
                 {etymology.archaic.map((d, i) => (
                   <div key={`arc-${i}`} style={S.etymEntry}>
-                    <span style={{ ...S.etymBadge, color: "#b88e4a", borderColor: "rgba(184,142,74,.3)" }}>{d.label}</span>
+                    <span style={{ ...S.etymBadge, color: "#d4a94e", borderColor: "rgba(212,169,78,.3)" }}>{d.label}</span>
                     <span style={S.etymDef}>{d.definition}</span>
                   </div>
                 ))}
@@ -752,13 +752,13 @@ const S = {
     width: "50%",
     height: 1,
     background:
-      "linear-gradient(90deg, transparent, rgba(184,142,74,.22), transparent)",
+      "linear-gradient(90deg, transparent, rgba(212,169,78,.22), transparent)",
   },
   titleRow: { display: "flex", alignItems: "baseline", gap: 10 },
   sigma: {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 24,
-    color: "#b88e4a",
+    color: "#d4a94e",
     opacity: 0.55,
   },
   title: {
@@ -767,14 +767,14 @@ const S = {
     fontWeight: 700,
     margin: 0,
     letterSpacing: ".08em",
-    color: "#e8d8b4",
+    color: "#f0d89a",
     textTransform: "uppercase",
   },
 
   clueCard: {
     width: "100%",
     background: "rgba(232,216,180,.025)",
-    border: "1px solid rgba(184,142,74,.1)",
+    border: "1px solid rgba(212,169,78,.1)",
     borderRadius: 10,
     padding: "14px 20px",
     textAlign: "center",
@@ -785,7 +785,7 @@ const S = {
     fontWeight: 600,
     letterSpacing: ".18em",
     textTransform: "uppercase",
-    color: "#b88e4a",
+    color: "#d4a94e",
     marginBottom: 7,
   },
   clueText: {
@@ -806,7 +806,7 @@ const S = {
     padding: "8px 16px",
     background: "rgba(232,216,180,.015)",
     borderRadius: 10,
-    border: "1px solid rgba(184,142,74,.06)",
+    border: "1px solid rgba(212,169,78,.06)",
   },
   wordDisplay: {
     fontFamily: "'Cormorant Garamond', serif",
@@ -819,7 +819,7 @@ const S = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 30,
     fontWeight: 700,
-    color: "rgba(184,142,74,.12)",
+    color: "rgba(212,169,78,.12)",
   },
 
   inputPreview: {
@@ -833,8 +833,8 @@ const S = {
   },
 
   toast: {
-    background: "rgba(184,142,74,.15)",
-    border: "1px solid rgba(184,142,74,.25)",
+    background: "rgba(212,169,78,.15)",
+    border: "1px solid rgba(212,169,78,.25)",
     borderRadius: 8,
     padding: "6px 16px",
     fontFamily: "'Cormorant Garamond', serif",
@@ -857,8 +857,8 @@ const S = {
     border: "1px solid transparent",
   },
   exploreBtn: {
-    background: "rgba(184,142,74,.1)",
-    border: "1px solid rgba(184,142,74,.2)",
+    background: "rgba(212,169,78,.1)",
+    border: "1px solid rgba(212,169,78,.2)",
   },
   solveBtn: {
     background: "rgba(106,158,90,.1)",
@@ -967,7 +967,7 @@ const S = {
     width: "30%",
     height: 1,
     background:
-      "linear-gradient(90deg, transparent, rgba(184,142,74,.12), transparent)",
+      "linear-gradient(90deg, transparent, rgba(212,169,78,.12), transparent)",
     marginBottom: 2,
   },
   hintsLabel: {
@@ -995,7 +995,7 @@ const S = {
     fontWeight: 700,
     letterSpacing: ".1em",
     textTransform: "uppercase",
-    color: "#b88e4a",
+    color: "#d4a94e",
   },
   hintDef: {
     fontFamily: "'Cormorant Garamond', serif",
@@ -1009,7 +1009,7 @@ const S = {
   resultCard: {
     width: "100%",
     background: "rgba(232,216,180,.035)",
-    border: "1px solid rgba(184,142,74,.18)",
+    border: "1px solid rgba(212,169,78,.18)",
     borderRadius: 12,
     padding: "22px 20px",
     textAlign: "center",
@@ -1022,8 +1022,7 @@ const S = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 36,
     lineHeight: 1,
-    color: "#b88e4a",
-    opacity: 0.75,
+    color: "#d4a94e",
     letterSpacing: ".08em",
   },
   resLabel: {
@@ -1037,7 +1036,7 @@ const S = {
     fontSize: 34,
     fontWeight: 700,
     letterSpacing: ".06em",
-    color: "#e8d8b4",
+    color: "#f0d89a",
     textTransform: "uppercase",
   },
   resJourney: {
@@ -1066,11 +1065,11 @@ const S = {
     fontFamily: "'Lora', serif",
     fontSize: 13,
     fontWeight: 600,
-    color: "#b88e4a",
+    color: "#d4a94e",
   },
   shareBtn: {
-    background: "rgba(184,142,74,.1)",
-    border: "1px solid rgba(184,142,74,.22)",
+    background: "rgba(212,169,78,.1)",
+    border: "1px solid rgba(212,169,78,.22)",
     borderRadius: 6,
     padding: "9px 22px",
     fontSize: 12,
@@ -1084,7 +1083,7 @@ const S = {
   etymologySection: {
     width: "100%",
     background: "rgba(232,216,180,.02)",
-    border: "1px solid rgba(184,142,74,.08)",
+    border: "1px solid rgba(212,169,78,.08)",
     borderRadius: 8,
     padding: "10px 14px",
     display: "flex",
@@ -1173,7 +1172,7 @@ const S = {
     fontWeight: 700,
     letterSpacing: ".1em",
     textTransform: "uppercase",
-    color: "#b88e4a",
+    color: "#d4a94e",
     opacity: 0.7,
   },
   bestTag: {

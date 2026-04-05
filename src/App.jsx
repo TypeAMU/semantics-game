@@ -23,7 +23,7 @@ export default function App() {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
         @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
         .menu-btn{transition:transform .08s,border-color .2s,background .2s}
-        .menu-btn:hover{transform:translateY(-2px);border-color:rgba(184,142,74,.35)!important;background:rgba(232,216,180,.06)!important}
+        .menu-btn:hover{transform:translateY(-2px);border-color:rgba(212,169,78,.35)!important;background:rgba(232,216,180,.06)!important}
         .menu-btn:active{transform:scale(.97)!important}
         @media(min-width:768px){
           .menu-page{padding:72px 24px!important}
@@ -133,13 +133,13 @@ const S = {
   rule: {
     width: '50%',
     height: 1,
-    background: 'linear-gradient(90deg, transparent, rgba(184,142,74,.22), transparent)',
+    background: 'linear-gradient(90deg, transparent, rgba(212,169,78,.22), transparent)',
   },
   titleRow: { display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 8 },
   sigma: {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 28,
-    color: '#b88e4a',
+    color: '#d4a94e',
     opacity: 0.55,
   },
   title: {
@@ -148,7 +148,7 @@ const S = {
     fontWeight: 700,
     margin: 0,
     letterSpacing: '.08em',
-    color: '#e8d8b4',
+    color: '#f0d89a',
     textTransform: 'uppercase',
   },
   subtitle: {
@@ -169,7 +169,7 @@ const S = {
   card: {
     width: '100%',
     background: 'rgba(232,216,180,.03)',
-    border: '1px solid rgba(184,142,74,.15)',
+    border: '1px solid rgba(212,169,78,.15)',
     borderRadius: 12,
     padding: '20px 22px',
     display: 'flex',
@@ -181,14 +181,13 @@ const S = {
   },
   cardHowTo: {
     background: 'rgba(232,216,180,.015)',
-    border: '1px solid rgba(184,142,74,.08)',
+    border: '1px solid rgba(212,169,78,.08)',
   },
   cardIcon: {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 34,
     lineHeight: 1,
-    color: '#b88e4a',
-    opacity: 0.75,
+    color: '#d4a94e',
     marginBottom: 4,
   },
   cardTitle: {
@@ -196,7 +195,7 @@ const S = {
     fontSize: 20,
     fontWeight: 700,
     letterSpacing: '.06em',
-    color: '#e8d8b4',
+    color: '#f0d89a',
   },
   cardDesc: {
     fontFamily: "'Cormorant Garamond', serif",
@@ -210,7 +209,7 @@ const S = {
     fontSize: 11,
     fontWeight: 700,
     letterSpacing: '.08em',
-    color: '#b88e4a',
+    color: '#d4a94e',
     marginTop: 2,
   },
 }

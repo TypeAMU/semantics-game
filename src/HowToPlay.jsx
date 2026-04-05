@@ -29,7 +29,7 @@ export default function HowToPlay({ onBack }) {
           <h2 style={S.sectionTitle}>Your Tools</h2>
 
           <div style={S.toolCard}>
-            <div style={{ ...S.toolBadge, background: 'rgba(184,142,74,.12)', color: '#cbb87a', borderColor: 'rgba(184,142,74,.2)' }}>
+            <div style={{ ...S.toolBadge, background: 'rgba(212,169,78,.12)', color: '#cbb87a', borderColor: 'rgba(212,169,78,.2)' }}>
               Explore
             </div>
             <p style={S.toolDesc}>
@@ -133,13 +133,13 @@ const S = {
     fontSize: 28,
     fontWeight: 700,
     letterSpacing: '.06em',
-    color: '#e8d8b4',
+    color: '#f0d89a',
     margin: 0,
   },
   rule: {
     width: '40%',
     height: 1,
-    background: 'linear-gradient(90deg, transparent, rgba(184,142,74,.22), transparent)',
+    background: 'linear-gradient(90deg, transparent, rgba(212,169,78,.22), transparent)',
   },
   section: {
     display: 'flex',
@@ -152,7 +152,7 @@ const S = {
     fontWeight: 700,
     letterSpacing: '.16em',
     textTransform: 'uppercase',
-    color: '#b88e4a',
+    color: '#d4a94e',
     margin: 0,
   },
   text: {
@@ -165,7 +165,7 @@ const S = {
   },
   toolCard: {
     background: 'rgba(232,216,180,.025)',
-    border: '1px solid rgba(184,142,74,.08)',
+    border: '1px solid rgba(212,169,78,.08)',
     borderRadius: 10,
     padding: '12px 16px',
     display: 'flex',
@@ -205,8 +205,7 @@ const S = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 28,
     lineHeight: 1,
-    color: '#b88e4a',
-    opacity: 0.75,
+    color: '#d4a94e',
     flexShrink: 0,
     marginTop: 2,
   },
