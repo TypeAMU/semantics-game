@@ -106,7 +106,7 @@ export default function App() {
 const S = {
   page: {
     minHeight: '100vh',
-    background: 'radial-gradient(ellipse at top, #2e1d0e 0%, #20140a 55%, #150c05 100%)',
+    background: 'radial-gradient(ellipse at top, #181410 0%, #0e0a06 55%, #050302 100%)',
     display: 'flex',
     justifyContent: 'center',
     padding: '40px 16px',

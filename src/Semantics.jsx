@@ -725,7 +725,7 @@ const S = {
   page: {
     minHeight: "100vh",
     background:
-      "radial-gradient(ellipse at top, #2e1d0e 0%, #20140a 55%, #150c05 100%)",
+      "radial-gradient(ellipse at top, #181410 0%, #0e0a06 55%, #050302 100%)",
     display: "flex",
     justifyContent: "center",
     padding: "14px 12px 28px",
@@ -860,14 +860,14 @@ const S = {
   },
   exploreBtn: {
     background:
-      "linear-gradient(180deg, #3a2614 0%, #2a1a0d 55%, #1f1208 100%)",
+      "linear-gradient(180deg, #1f1a12 0%, #141009 55%, #0a0704 100%)",
     border: "1px solid rgba(232,196,88,.55)",
     boxShadow:
       "inset 0 1px 0 rgba(232,196,88,.22), inset 0 -1px 0 rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.45)",
   },
   solveBtn: {
     background:
-      "linear-gradient(180deg, #3a2614 0%, #2a1a0d 55%, #1f1208 100%)",
+      "linear-gradient(180deg, #1f1a12 0%, #141009 55%, #0a0704 100%)",
     border: "1px solid rgba(168,216,152,.45)",
     boxShadow:
       "inset 0 1px 0 rgba(168,216,152,.18), inset 0 -1px 0 rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.45)",
