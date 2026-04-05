@@ -29,7 +29,7 @@ export default function HowToPlay({ onBack }) {
           <h2 style={S.sectionTitle}>Your Tools</h2>
 
           <div style={S.toolCard}>
-            <div style={{ ...S.toolBadge, background: 'rgba(212,169,78,.12)', color: '#cbb87a', borderColor: 'rgba(212,169,78,.2)' }}>
+            <div style={{ ...S.toolBadge, background: 'rgba(232,196,88,.12)', color: '#cbb87a', borderColor: 'rgba(232,196,88,.2)' }}>
               Explore
             </div>
             <p style={S.toolDesc}>
@@ -94,7 +94,7 @@ export default function HowToPlay({ onBack }) {
 const S = {
   page: {
     minHeight: '100vh',
-    background: 'linear-gradient(178deg, #1c1914 0%, #221e18 50%, #1a1712 100%)',
+    background: 'radial-gradient(ellipse at top, #2e1d0e 0%, #20140a 55%, #150c05 100%)',
     display: 'flex',
     justifyContent: 'center',
     padding: '24px 16px 40px',
@@ -139,7 +139,7 @@ const S = {
   rule: {
     width: '40%',
     height: 1,
-    background: 'linear-gradient(90deg, transparent, rgba(212,169,78,.22), transparent)',
+    background: 'linear-gradient(90deg, transparent, rgba(232,196,88,.22), transparent)',
   },
   section: {
     display: 'flex',
@@ -152,7 +152,7 @@ const S = {
     fontWeight: 700,
     letterSpacing: '.16em',
     textTransform: 'uppercase',
-    color: '#d4a94e',
+    color: '#e8c458',
     margin: 0,
   },
   text: {
@@ -165,7 +165,7 @@ const S = {
   },
   toolCard: {
     background: 'rgba(232,216,180,.025)',
-    border: '1px solid rgba(212,169,78,.08)',
+    border: '1px solid rgba(232,196,88,.08)',
     borderRadius: 10,
     padding: '12px 16px',
     display: 'flex',
@@ -205,7 +205,7 @@ const S = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 28,
     lineHeight: 1,
-    color: '#d4a94e',
+    color: '#e8c458',
     flexShrink: 0,
     marginTop: 2,
   },

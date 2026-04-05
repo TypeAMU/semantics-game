@@ -289,11 +289,12 @@ export default function Semantics({ mode = "streak", onBack }) {
         .word-letter{display:inline-block;animation:letterPop .35s ease-out both}
         .sem-guess-list::-webkit-scrollbar{width:3px}
         .sem-guess-list::-webkit-scrollbar-track{background:transparent}
-        .sem-guess-list::-webkit-scrollbar-thumb{background:rgba(212,169,78,.15);border-radius:3px}
+        .sem-guess-list::-webkit-scrollbar-thumb{background:rgba(232,196,88,.15);border-radius:3px}
         .kb-key{transition:transform .06s,background .2s}
         .kb-key:active{transform:scale(.9)!important}
-        .action-btn{transition:transform .08s,opacity .2s}
-        .action-btn:active{transform:scale(.95)!important}
+        .action-btn{transition:transform .12s,opacity .2s,box-shadow .2s,filter .2s}
+        .action-btn:hover:not(:disabled){transform:translateY(-1px);filter:brightness(1.15)}
+        .action-btn:active{transform:scale(.96)!important}
         .action-btn:disabled{opacity:.3;cursor:default;transform:none!important}
         @media(min-width:768px){
           .sem-page{padding:48px 24px 64px!important}
@@ -405,12 +406,12 @@ export default function Semantics({ mode = "streak", onBack }) {
                     fontSize: wordFontSize,
                     color: lt.found
                       ? allFound ? "#b8daa8" : "#a8d898"
-                      : "#b8944a",
+                      : "#e8c458",
                     textShadow: lt.found
                       ? allFound
                         ? "0 0 16px rgba(168,216,152,.3)"
                         : "0 0 8px rgba(106,158,90,.12)"
-                      : "none",
+                      : "0 0 10px rgba(232,196,88,.35), 0 1px 0 rgba(0,0,0,.6)",
                     animationDelay: `${i * 50}ms`,
                   }}
                 >
@@ -425,8 +426,9 @@ export default function Semantics({ mode = "streak", onBack }) {
                   key={i}
                   style={{
                     fontSize: wordFontSize,
-                    color: "#b8944a",
+                    color: "#e8c458",
                     letterSpacing: ".08em",
+                    textShadow: "0 0 10px rgba(232,196,88,.35), 0 1px 0 rgba(0,0,0,.6)",
                   }}
                 >
                   _
@@ -504,7 +506,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                     borderLeftColor: won
                       ? "#7aaa5e"
                       : isExplore
-                      ? "#d4a94e"
+                      ? "#e8c458"
                       : "#8a6a5a",
                     background: won ? "rgba(106,158,90,.07)" : undefined,
                   }}
@@ -517,7 +519,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                         background: won
                           ? "rgba(106,158,90,.15)"
                           : isExplore
-                          ? "rgba(212,169,78,.12)"
+                          ? "rgba(232,196,88,.12)"
                           : "rgba(138,106,90,.12)",
                         color: won
                           ? "#a8d898"
@@ -527,7 +529,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                         borderColor: won
                           ? "rgba(106,158,90,.25)"
                           : isExplore
-                          ? "rgba(212,169,78,.2)"
+                          ? "rgba(232,196,88,.2)"
                           : "rgba(138,106,90,.2)",
                       }}
                     >
@@ -592,7 +594,7 @@ export default function Semantics({ mode = "streak", onBack }) {
                 ))}
                 {etymology.archaic.map((d, i) => (
                   <div key={`arc-${i}`} style={S.etymEntry}>
-                    <span style={{ ...S.etymBadge, color: "#d4a94e", borderColor: "rgba(212,169,78,.3)" }}>{d.label}</span>
+                    <span style={{ ...S.etymBadge, color: "#e8c458", borderColor: "rgba(232,196,88,.3)" }}>{d.label}</span>
                     <span style={S.etymDef}>{d.definition}</span>
                   </div>
                 ))}
@@ -723,7 +725,7 @@ const S = {
   page: {
     minHeight: "100vh",
     background:
-      "linear-gradient(178deg, #1c1914 0%, #221e18 50%, #1a1712 100%)",
+      "radial-gradient(ellipse at top, #2e1d0e 0%, #20140a 55%, #150c05 100%)",
     display: "flex",
     justifyContent: "center",
     padding: "14px 12px 28px",
@@ -752,13 +754,13 @@ const S = {
     width: "50%",
     height: 1,
     background:
-      "linear-gradient(90deg, transparent, rgba(212,169,78,.22), transparent)",
+      "linear-gradient(90deg, transparent, rgba(232,196,88,.22), transparent)",
   },
   titleRow: { display: "flex", alignItems: "baseline", gap: 10 },
   sigma: {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 24,
-    color: "#d4a94e",
+    color: "#e8c458",
     opacity: 0.55,
   },
   title: {
@@ -774,7 +776,7 @@ const S = {
   clueCard: {
     width: "100%",
     background: "rgba(232,216,180,.025)",
-    border: "1px solid rgba(212,169,78,.1)",
+    border: "1px solid rgba(232,196,88,.1)",
     borderRadius: 10,
     padding: "14px 20px",
     textAlign: "center",
@@ -785,7 +787,7 @@ const S = {
     fontWeight: 600,
     letterSpacing: ".18em",
     textTransform: "uppercase",
-    color: "#d4a94e",
+    color: "#e8c458",
     marginBottom: 7,
   },
   clueText: {
@@ -806,7 +808,7 @@ const S = {
     padding: "8px 16px",
     background: "rgba(232,216,180,.015)",
     borderRadius: 10,
-    border: "1px solid rgba(212,169,78,.06)",
+    border: "1px solid rgba(232,196,88,.06)",
   },
   wordDisplay: {
     fontFamily: "'Cormorant Garamond', serif",
@@ -819,7 +821,7 @@ const S = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 30,
     fontWeight: 700,
-    color: "rgba(212,169,78,.12)",
+    color: "rgba(232,196,88,.12)",
   },
 
   inputPreview: {
@@ -833,8 +835,8 @@ const S = {
   },
 
   toast: {
-    background: "rgba(212,169,78,.15)",
-    border: "1px solid rgba(212,169,78,.25)",
+    background: "rgba(232,196,88,.15)",
+    border: "1px solid rgba(232,196,88,.25)",
     borderRadius: 8,
     padding: "6px 16px",
     fontFamily: "'Cormorant Garamond', serif",
@@ -844,11 +846,11 @@ const S = {
     letterSpacing: ".04em",
   },
 
-  actionRow: { width: "100%", display: "flex", gap: 8 },
+  actionRow: { width: "100%", display: "flex", gap: 10 },
   actionBtn: {
     flex: 1,
-    borderRadius: 10,
-    padding: "10px 8px",
+    borderRadius: 8,
+    padding: "12px 10px",
     cursor: "pointer",
     display: "flex",
     flexDirection: "column",
@@ -857,20 +859,28 @@ const S = {
     border: "1px solid transparent",
   },
   exploreBtn: {
-    background: "rgba(212,169,78,.1)",
-    border: "1px solid rgba(212,169,78,.2)",
+    background:
+      "linear-gradient(180deg, #3a2614 0%, #2a1a0d 55%, #1f1208 100%)",
+    border: "1px solid rgba(232,196,88,.55)",
+    boxShadow:
+      "inset 0 1px 0 rgba(232,196,88,.22), inset 0 -1px 0 rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.45)",
   },
   solveBtn: {
-    background: "rgba(106,158,90,.1)",
-    border: "1px solid rgba(106,158,90,.2)",
+    background:
+      "linear-gradient(180deg, #3a2614 0%, #2a1a0d 55%, #1f1208 100%)",
+    border: "1px solid rgba(168,216,152,.45)",
+    boxShadow:
+      "inset 0 1px 0 rgba(168,216,152,.18), inset 0 -1px 0 rgba(0,0,0,.4), 0 2px 6px rgba(0,0,0,.45)",
   },
   btnDisabled: {},
   actionLabel: {
     fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: 700,
-    letterSpacing: ".06em",
-    color: "#e0d4be",
+    letterSpacing: ".1em",
+    textTransform: "uppercase",
+    color: "#f0d89a",
+    textShadow: "0 1px 0 rgba(0,0,0,.6)",
   },
   actionDesc: {
     fontFamily: "'Cormorant Garamond', serif",
@@ -967,7 +977,7 @@ const S = {
     width: "30%",
     height: 1,
     background:
-      "linear-gradient(90deg, transparent, rgba(212,169,78,.12), transparent)",
+      "linear-gradient(90deg, transparent, rgba(232,196,88,.12), transparent)",
     marginBottom: 2,
   },
   hintsLabel: {
@@ -995,7 +1005,7 @@ const S = {
     fontWeight: 700,
     letterSpacing: ".1em",
     textTransform: "uppercase",
-    color: "#d4a94e",
+    color: "#e8c458",
   },
   hintDef: {
     fontFamily: "'Cormorant Garamond', serif",
@@ -1009,7 +1019,7 @@ const S = {
   resultCard: {
     width: "100%",
     background: "rgba(232,216,180,.035)",
-    border: "1px solid rgba(212,169,78,.18)",
+    border: "1px solid rgba(232,196,88,.18)",
     borderRadius: 12,
     padding: "22px 20px",
     textAlign: "center",
@@ -1022,7 +1032,7 @@ const S = {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 36,
     lineHeight: 1,
-    color: "#d4a94e",
+    color: "#e8c458",
     letterSpacing: ".08em",
   },
   resLabel: {
@@ -1065,11 +1075,11 @@ const S = {
     fontFamily: "'Lora', serif",
     fontSize: 13,
     fontWeight: 600,
-    color: "#d4a94e",
+    color: "#e8c458",
   },
   shareBtn: {
-    background: "rgba(212,169,78,.1)",
-    border: "1px solid rgba(212,169,78,.22)",
+    background: "rgba(232,196,88,.1)",
+    border: "1px solid rgba(232,196,88,.22)",
     borderRadius: 6,
     padding: "9px 22px",
     fontSize: 12,
@@ -1083,7 +1093,7 @@ const S = {
   etymologySection: {
     width: "100%",
     background: "rgba(232,216,180,.02)",
-    border: "1px solid rgba(212,169,78,.08)",
+    border: "1px solid rgba(232,196,88,.08)",
     borderRadius: 8,
     padding: "10px 14px",
     display: "flex",
@@ -1172,7 +1182,7 @@ const S = {
     fontWeight: 700,
     letterSpacing: ".1em",
     textTransform: "uppercase",
-    color: "#d4a94e",
+    color: "#e8c458",
     opacity: 0.7,
   },
   bestTag: {
