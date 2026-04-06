@@ -78,7 +78,7 @@ export default function HowToPlay({ onBack }) {
             <span style={S.modeIcon}>♯</span>
             <div>
               <span style={S.modeName}>Streak</span>
-              <p style={S.modeDesc}>Solve as many puzzles in a row as you can. One loss ends your streak.</p>
+              <p style={S.modeDesc}>Solve as many puzzles in a row as you can. One loss ends your streak. Difficulty increases as your streak grows &mdash; you'll have fewer explores and solves to work with.</p>
             </div>
           </div>
         </div>

@@ -7,9 +7,18 @@ import { getStats, recordStreakResult, recordDailyResult, getDailyResult } from 
 initializeCache(PUZZLES);
 
 // --- Game config ---
-const MAX_EXPLORES = 3;
-const MAX_SOLVES = 3;
 const KB_ROWS = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+
+// Streak difficulty tiers — actions shrink as streak grows
+function getStreakLimits(streak) {
+  if (streak >= 30) return { explores: 1, solves: 2 };
+  if (streak >= 20) return { explores: 2, solves: 2 };
+  if (streak >= 10) return { explores: 2, solves: 3 };
+  return { explores: 3, solves: 3 };
+}
+
+const DAILY_EXPLORES = 3;
+const DAILY_SOLVES = 3;
 
 function getVisibleWord(answer, keyStates) {
   const found = new Set(
@@ -39,11 +48,16 @@ export default function Semantics({ mode = "streak", onBack }) {
   const dayNumber = getPuzzleNumber();
   const [dailyAlreadyDone] = useState(() => mode === "daily" ? getDailyResult(dayNumber) : null);
 
+  const streakExhausted = mode === "streak" && streakIndex >= streakOrder.length;
   const puzzle = mode === "daily"
     ? getDailyPuzzle()
-    : PUZZLES[streakOrder[streakIndex % streakOrder.length]];
+    : PUZZLES[streakOrder[streakIndex] ?? streakOrder[0]];
   const answer = puzzle.answer.toUpperCase();
   const answerSet = useMemo(() => new Set([...answer]), [answer]);
+
+  const { explores: maxExplores, solves: maxSolves } = mode === "streak"
+    ? getStreakLimits(streak)
+    : { explores: DAILY_EXPLORES, solves: DAILY_SOLVES };
 
   const [guesses, setGuesses] = useState([]);
   const [input, setInput] = useState("");
@@ -77,6 +91,13 @@ export default function Semantics({ mode = "streak", onBack }) {
     }
   }, [gameState]);
 
+  const handleBack = () => {
+    if (mode === "streak" && streak > 0) {
+      recordStreakResult(streak);
+    }
+    onBack();
+  };
+
   const nextPuzzle = () => {
     if (mode === "streak") {
       if (gameState === "lost") {
@@ -85,8 +106,17 @@ export default function Semantics({ mode = "streak", onBack }) {
         setStreakOver(true);
         return;
       }
-      setStreak((s) => s + 1);
-      setStreakIndex((i) => i + 1);
+      const newStreak = streak + 1;
+      const newIndex = streakIndex + 1;
+      setStreak(newStreak);
+      setStreakIndex(newIndex);
+      // All puzzles solved — end streak as a win
+      if (newIndex >= streakOrder.length) {
+        const stats = recordStreakResult(newStreak);
+        setStreakBest(stats.streakBest);
+        setStreakOver(true);
+        return;
+      }
     }
     setGuesses([]);
     setInput("");
@@ -98,8 +128,8 @@ export default function Semantics({ mode = "streak", onBack }) {
 
   const explores = guesses.filter((g) => g.mode === "explore").length;
   const solves = guesses.filter((g) => g.mode === "solve").length;
-  const hasExplores = explores < MAX_EXPLORES;
-  const hasSolves = solves < MAX_SOLVES;
+  const hasExplores = explores < maxExplores;
+  const hasSolves = solves < maxSolves;
   const exploreCap = answer.length;
 
   const keyStates = useMemo(() => {
@@ -224,11 +254,11 @@ export default function Semantics({ mode = "streak", onBack }) {
 
       const nextExplores = next.filter((x) => x.mode === "explore").length;
       const nextSolves = next.filter((x) => x.mode === "solve").length;
-      if (nextExplores >= MAX_EXPLORES && nextSolves >= MAX_SOLVES) {
+      if (nextExplores >= maxExplores && nextSolves >= maxSolves) {
         setGameState("lost");
       }
     },
-    [input, guesses, answer, answerSet, gameState, hasExplores, hasSolves, keyStates, exploreCap, checking]
+    [input, guesses, answer, answerSet, gameState, hasExplores, hasSolves, keyStates, exploreCap, checking, maxExplores, maxSolves]
   );
 
   const handleKey = useCallback(
@@ -267,7 +297,7 @@ export default function Semantics({ mode = "streak", onBack }) {
       )
       .join("");
     navigator.clipboard?.writeText(
-      `Σ Semantics ${gameState === "won" ? guesses.length : "X"}/${MAX_EXPLORES + MAX_SOLVES}\n${icons}\n"${puzzle.clue}"`
+      `Σ Semantics ${gameState === "won" ? guesses.length : "X"}/${maxExplores + maxSolves}\n${icons}\n"${puzzle.clue}"`
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
@@ -337,7 +367,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         <div className="sem-header" style={S.header}>
           <div style={S.headerTop}>
             {onBack && (
-              <button onClick={onBack} style={S.backBtn}>&larr;</button>
+              <button onClick={handleBack} style={S.backBtn}>&larr;</button>
             )}
             <div style={{ flex: 1 }} />
             {mode === "streak" && (
@@ -466,7 +496,7 @@ export default function Semantics({ mode = "streak", onBack }) {
               <span className="sem-action-label" style={S.actionLabel}>{checking ? "Checking…" : "Explore"}</span>
               <span className="sem-action-desc" style={S.actionDesc}>Checks which letters match</span>
               <span className="sem-action-meta" style={S.actionMeta}>
-                Up to {exploreCap} letters · {MAX_EXPLORES - explores} left
+                Up to {exploreCap} letters · {maxExplores - explores} left
               </span>
             </button>
             <button
@@ -482,7 +512,7 @@ export default function Semantics({ mode = "streak", onBack }) {
               <span className="sem-action-label" style={S.actionLabel}>Solve</span>
               <span className="sem-action-desc" style={S.actionDesc}>Guess the answer, 1 hint if wrong</span>
               <span className="sem-action-meta" style={S.actionMeta}>
-                Any length · {MAX_SOLVES - solves} left
+                Any length · {maxSolves - solves} left
               </span>
             </button>
           </div>
@@ -642,7 +672,9 @@ export default function Semantics({ mode = "streak", onBack }) {
         {mode === "streak" && streakOver && (
           <div className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
             <div style={S.resultGlyph}>♯</div>
-            <div style={S.resLabel}>Streak Over</div>
+            <div style={S.resLabel}>
+              {streakIndex >= streakOrder.length ? "All Puzzles Cleared!" : "Streak Over"}
+            </div>
             <div style={S.resWord}>{streak}</div>
             <div style={S.resScore}>
               {streak === 1 ? "1 word solved" : `${streak} words solved in a row`}
