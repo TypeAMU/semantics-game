@@ -26,21 +26,21 @@ export default function App() {
         .menu-btn:hover{transform:translateY(-2px);border-color:rgba(232,196,88,.35)!important;background:rgba(232,216,180,.06)!important}
         .menu-btn:active{transform:scale(.97)!important}
         @media(min-width:768px){
-          .menu-page{padding:72px 24px!important}
-          .menu-container{max-width:600px!important;gap:44px!important}
-          .menu-title{font-size:52px!important}
-          .menu-subtitle{font-size:18px!important;max-width:420px!important}
-          .menu-card{padding:30px 32px!important;border-radius:16px!important}
-          .menu-card-title{font-size:28px!important}
-          .menu-card-desc{font-size:17px!important}
-        }
-        @media(min-width:1200px){
-          .menu-container{max-width:680px!important;gap:52px!important}
-          .menu-title{font-size:60px!important}
-          .menu-subtitle{font-size:20px!important;max-width:480px!important}
-          .menu-card{padding:36px 38px!important}
+          .menu-page{padding:80px 28px!important}
+          .menu-container{max-width:660px!important;gap:48px!important}
+          .menu-title{font-size:58px!important}
+          .menu-subtitle{font-size:20px!important;max-width:460px!important}
+          .menu-card{padding:34px 36px!important;border-radius:18px!important}
           .menu-card-title{font-size:32px!important}
           .menu-card-desc{font-size:18px!important}
+        }
+        @media(min-width:1200px){
+          .menu-container{max-width:760px!important;gap:56px!important}
+          .menu-title{font-size:68px!important}
+          .menu-subtitle{font-size:22px!important;max-width:520px!important}
+          .menu-card{padding:40px 42px!important;border-radius:20px!important}
+          .menu-card-title{font-size:36px!important}
+          .menu-card-desc{font-size:20px!important}
         }
       `}</style>
 

@@ -164,6 +164,7 @@ const STREAKS = [
   {
     answer: decode("QlJBVkU="),
     clue: "Showy, gaudy, finely dressed",
+    modernDef: "Ready to face and endure danger or pain",
     hints: [
       { era: "1500s", def: "Splendid, handsome, making a fine display" },
       { era: "1600s", def: "Courageous, ready to face danger" },

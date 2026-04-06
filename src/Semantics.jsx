@@ -74,14 +74,18 @@ export default function Semantics({ mode = "streak", onBack }) {
   useEffect(() => {
     if (gameState !== "playing") {
       fetchDefinitions(answer).then(setEtymology).catch(() => {});
-      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${answer.toLowerCase()}`)
-        .then((r) => r.ok ? r.json() : null)
-        .then((data) => {
-          if (!data) return;
-          const def = data[0]?.meanings?.[0]?.definitions?.[0]?.definition;
-          if (def) setModernDef(def);
-        })
-        .catch(() => {});
+      if (puzzle.modernDef) {
+        setModernDef(puzzle.modernDef);
+      } else {
+        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${answer.toLowerCase()}`)
+          .then((r) => r.ok ? r.json() : null)
+          .then((data) => {
+            if (!data) return;
+            const def = data[0]?.meanings?.[0]?.definitions?.[0]?.definition;
+            if (def) setModernDef(def);
+          })
+          .catch(() => {});
+      }
     }
   }, [gameState, answer]);
 
@@ -328,38 +332,43 @@ export default function Semantics({ mode = "streak", onBack }) {
         .action-btn:active{transform:scale(.96)!important}
         .action-btn:disabled{opacity:.3;cursor:default;transform:none!important}
         @media(min-width:768px){
-          .sem-page{padding:48px 24px 64px!important}
-          .sem-container{max-width:720px!important;gap:20px!important}
-          .sem-header .sem-sigma{font-size:38px!important}
-          .sem-header .sem-title{font-size:46px!important}
-          .sem-clue-card{padding:24px 32px!important;border-radius:16px!important}
-          .sem-clue-label{font-size:14px!important}
-          .sem-clue-text{font-size:28px!important}
-          .sem-word-area{min-height:80px!important;padding:18px 28px!important;border-radius:16px!important}
-          .sem-input-preview{font-size:21px!important}
-          .sem-action-row{gap:14px!important}
-          .sem-action-btn{padding:18px 14px!important;border-radius:16px!important}
-          .sem-action-label{font-size:24px!important}
-          .sem-action-desc{font-size:14px!important}
-          .sem-action-meta{font-size:12px!important}
-          .sem-guess-row{padding:14px 18px!important;border-radius:12px!important}
-          .sem-mode-badge{font-size:12px!important;padding:4px 12px!important}
-          .sem-row-word{font-size:22px!important}
-          .sem-result-card{padding:32px 28px!important;border-radius:18px!important}
-          .sem-kb{max-width:580px!important;gap:8px!important}
-          .sem-kb-row{gap:7px!important}
-          .sem-kb-key{padding:20px 0!important;min-width:46px!important;max-width:54px!important;font-size:18px!important;border-radius:8px!important}
-        }
-        @media(min-width:1200px){
-          .sem-container{max-width:800px!important;gap:24px!important}
+          .sem-page{padding:56px 28px 72px!important}
+          .sem-container{max-width:780px!important;gap:24px!important}
           .sem-header .sem-sigma{font-size:44px!important}
           .sem-header .sem-title{font-size:52px!important}
+          .sem-clue-card{padding:28px 36px!important;border-radius:18px!important}
+          .sem-clue-label{font-size:16px!important}
           .sem-clue-text{font-size:32px!important}
-          .sem-clue-label{font-size:15px!important}
-          .sem-action-label{font-size:26px!important}
+          .sem-word-area{min-height:90px!important;padding:22px 32px!important;border-radius:18px!important}
+          .sem-input-preview{font-size:24px!important}
+          .sem-action-row{gap:16px!important}
+          .sem-action-btn{padding:22px 18px!important;border-radius:18px!important}
+          .sem-action-label{font-size:28px!important}
+          .sem-action-desc{font-size:16px!important}
+          .sem-action-meta{font-size:13px!important}
+          .sem-guess-row{padding:16px 20px!important;border-radius:14px!important}
+          .sem-mode-badge{font-size:14px!important;padding:5px 14px!important}
           .sem-row-word{font-size:24px!important}
-          .sem-kb{max-width:660px!important}
-          .sem-kb-key{padding:22px 0!important;min-width:52px!important;max-width:60px!important;font-size:19px!important}
+          .sem-result-card{padding:36px 32px!important;border-radius:20px!important}
+          .sem-kb{max-width:640px!important;gap:10px!important}
+          .sem-kb-row{gap:8px!important}
+          .sem-kb-key{padding:22px 0!important;min-width:52px!important;max-width:60px!important;font-size:20px!important;border-radius:10px!important}
+        }
+        @media(min-width:1200px){
+          .sem-container{max-width:880px!important;gap:28px!important}
+          .sem-header .sem-sigma{font-size:50px!important}
+          .sem-header .sem-title{font-size:60px!important}
+          .sem-clue-card{padding:32px 40px!important}
+          .sem-clue-text{font-size:36px!important}
+          .sem-clue-label{font-size:17px!important}
+          .sem-word-area{min-height:100px!important;padding:24px 36px!important}
+          .sem-input-preview{font-size:26px!important}
+          .sem-action-label{font-size:30px!important}
+          .sem-action-desc{font-size:17px!important}
+          .sem-row-word{font-size:26px!important}
+          .sem-result-card{padding:40px 36px!important;border-radius:22px!important}
+          .sem-kb{max-width:720px!important}
+          .sem-kb-key{padding:24px 0!important;min-width:58px!important;max-width:66px!important;font-size:21px!important}
         }
       `}</style>
 
