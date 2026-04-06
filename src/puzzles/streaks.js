@@ -1729,6 +1729,46 @@ const STREAKS = [
       { era: "1800s", def: "To cause great destruction or devastation" },
     ],
   },
+  {
+    answer: decode("Rk9SVFVORQ=="),
+    clue: "To happen or take place",
+    hints: [
+      { era: "1300s", def: "Chance, luck, or fate as a governing force" },
+      { era: "1600s", def: "Accumulated wealth or material prosperity" },
+    ],
+  },
+  {
+    answer: decode("REVTUElURQ=="),
+    clue: "Disdain, contemptuous hatred",
+    hints: [
+      { era: "1300s", def: "An act of contempt or outrage against someone" },
+      { era: "1500s", def: "Notwithstanding, used in the phrase 'in despite of'" },
+    ],
+  },
+  {
+    answer: decode("Q09OVkVSU0FUSU9O"),
+    clue: "A place where one lives or dwells",
+    hints: [
+      { era: "1300s", def: "One's general conduct or manner of living in the world" },
+      { era: "1600s", def: "Intimate familiarity or close company with others" },
+    ],
+  },
+  {
+    answer: decode("Rk9SRVNU"),
+    clue: "An area of land allocated for royal hunting",
+    hints: [
+      { era: "1300s", def: "Any uncultivated tract of land, whether wooded or not" },
+      { era: "1500s", def: "A large, wild area densely covered with trees" },
+    ],
+  },
+  {
+    answer: decode("Q09ORlVTSU9O"),
+    clue: "Overthrow; complete ruin or destruction",
+    hints: [
+      { era: "1300s", def: "A state of disorder, shame, or embarrassment" },
+      { era: "1500s", def: "A mingling together so that things cannot be distinguished" },
+    ],
+  },
 ];
 
 export default STREAKS;

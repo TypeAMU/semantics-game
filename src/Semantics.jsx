@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import PUZZLES, { getPuzzleByIndex, getDailyPuzzle, getPuzzleNumber } from "./puzzles";
+import PUZZLES, { getPuzzleByIndex, getDailyPuzzle, getPuzzleNumber, getLockedDailyIndices } from "./puzzles";
 import { isWord, initializeCache } from "./services/wordValidation";
 import { fetchDefinitions } from "./services/definitionsApi";
 import { getStats, recordStreakResult, recordDailyResult, getDailyResult } from "./services/gameStats";
@@ -29,17 +29,18 @@ function getVisibleWord(answer, keyStates) {
   return [...answer].map((ch) => ({ ch, found: found.has(ch) }));
 }
 
-function getRandomIndices(count) {
-  const indices = Array.from({ length: PUZZLES.length }, (_, i) => i);
+function getRandomIndices() {
+  const locked = getLockedDailyIndices();
+  const indices = Array.from({ length: PUZZLES.length }, (_, i) => i).filter(i => !locked.has(i));
   for (let i = indices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
-  return indices.slice(0, count);
+  return indices;
 }
 
 export default function Semantics({ mode = "streak", onBack }) {
-  const [streakOrder] = useState(() => getRandomIndices(PUZZLES.length));
+  const [streakOrder] = useState(() => getRandomIndices());
   const [streakIndex, setStreakIndex] = useState(0);
   const [streak, setStreak] = useState(0);
   const [streakOver, setStreakOver] = useState(false);
