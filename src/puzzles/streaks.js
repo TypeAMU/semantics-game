@@ -1465,6 +1465,270 @@ const STREAKS = [
       { era: "1600s", def: "Of the highest quality or importance" },
     ],
   },
+  {
+    answer: decode("VEVSUklGSUM="),
+    clue: "Terrifying; causing terror; inspiring dread",
+    hints: [
+      { era: "1600s", def: "Awe-inspiring; of extraordinary size or intensity" },
+      { era: "1800s", def: "Extraordinarily great or wonderful" },
+    ],
+  },
+  {
+    answer: decode("QVdFU09NRQ=="),
+    clue: "Causing awe or terror; inspiring fearful wonder",
+    hints: [
+      { era: "1600s", def: "Profoundly reverential; filled with awe" },
+      { era: "1900s", def: "Extremely impressive; excellent" },
+    ],
+  },
+  {
+    answer: decode("U01BUlQ="),
+    clue: "Causing sharp, stinging pain",
+    hints: [
+      { era: "1300s", def: "Quick; active; clever in a practical way" },
+      { era: "1700s", def: "Intelligent; showing mental sharpness" },
+    ],
+  },
+  {
+    answer: decode("UklWQUw="),
+    clue: "One having a common right or privilege with another; a partner",
+    hints: [
+      { era: "1500s", def: "One who pursues the same object as another" },
+      { era: "1600s", def: "A competitor; one striving against another" },
+    ],
+  },
+  {
+    answer: decode("VEhSSUxM"),
+    clue: "To perforate with a pointed instrument; to bore or drill",
+    hints: [
+      { era: "1400s", def: "To penetrate; to pierce through with emotion" },
+      { era: "1600s", def: "To cause a sudden wave of excitement or pleasure" },
+    ],
+  },
+  {
+    answer: decode("QlVYT00="),
+    clue: "Meek; obedient; morally pliant and yielding",
+    hints: [
+      { era: "1300s", def: "Compliant; yielding; gracious" },
+      { era: "1500s", def: "Plump and healthy-looking; full-figured" },
+    ],
+  },
+  {
+    answer: decode("QkFMREVSREFTSA=="),
+    clue: "A worthless mixture of liquors; a frothy liquid",
+    hints: [
+      { era: "1600s", def: "A jumble of words; senseless talk" },
+      { era: "1700s", def: "Complete nonsense; rubbish" },
+    ],
+  },
+  {
+    answer: decode("Q09OQ0VJVA=="),
+    clue: "Something conceived in the mind; an idea or thought",
+    hints: [
+      { era: "1500s", def: "A witty or fanciful notion; an elaborate metaphor" },
+      { era: "1700s", def: "Excessive pride in oneself; vanity" },
+    ],
+  },
+  {
+    answer: decode("Rk9ORA=="),
+    clue: "Foolish; simple; lacking in sense",
+    hints: [
+      { era: "1400s", def: "Infatuated; doting to excess" },
+      { era: "1600s", def: "Having warm or tender feelings; affectionate" },
+    ],
+  },
+  {
+    answer: decode("SE9ORVNU"),
+    clue: "Chaste; faithful; sexually virtuous",
+    hints: [
+      { era: "1400s", def: "Respectable; held in high regard" },
+      { era: "1600s", def: "Truthful; free from deceit" },
+    ],
+  },
+  {
+    answer: decode("SFVTU1k="),
+    clue: "A housewife; a thrifty housekeeper",
+    hints: [
+      { era: "1500s", def: "A woman of the lower classes; a common woman" },
+      { era: "1700s", def: "A brazen or immoral woman" },
+    ],
+  },
+  {
+    answer: decode("TEVXRA=="),
+    clue: "Of the laity; not belonging to the clergy; uneducated",
+    hints: [
+      { era: "1300s", def: "Common; vulgar; of low birth" },
+      { era: "1500s", def: "Obscene; indecent; sexually inappropriate" },
+    ],
+  },
+  {
+    answer: decode("TUFOVVJF"),
+    clue: "To cultivate land by manual labor; to till",
+    hints: [
+      { era: "1400s", def: "To work or manage; to handle" },
+      { era: "1600s", def: "Animal dung used to fertilize the soil" },
+    ],
+  },
+  {
+    answer: decode("UFJFU1RJR0U="),
+    clue: "A delusion; an illusion; a conjuring trick",
+    hints: [
+      { era: "1600s", def: "An imposture; a dazzling deception" },
+      { era: "1800s", def: "High standing or reputation; distinction" },
+    ],
+  },
+  {
+    answer: decode("UVVBSU5U"),
+    clue: "Cunning; crafty; cleverly devised",
+    hints: [
+      { era: "1300s", def: "Skillfully wrought; elegant; beautiful" },
+      { era: "1700s", def: "Attractively unusual in an old-fashioned way" },
+    ],
+  },
+  {
+    answer: decode("UVVJQ0s="),
+    clue: "Alive; living; not dead",
+    hints: [
+      { era: "1300s", def: "Lively; animated; vigorous" },
+      { era: "1500s", def: "Moving with speed; rapid; fast" },
+    ],
+  },
+  {
+    answer: decode("UkVFSw=="),
+    clue: "To emit smoke or vapour; to steam",
+    hints: [
+      { era: "1400s", def: "To give off a strong smell of any kind" },
+      { era: "1700s", def: "To smell strongly and unpleasantly; to stink" },
+    ],
+  },
+  {
+    answer: decode("U0hSRVdE"),
+    clue: "Wicked; evil; portending misfortune",
+    hints: [
+      { era: "1400s", def: "Sharp; biting; severe" },
+      { era: "1600s", def: "Astute; having sharp judgment; clever" },
+    ],
+  },
+  {
+    answer: decode("U0lOSVNURVI="),
+    clue: "Of the left side; left-handed",
+    hints: [
+      { era: "1400s", def: "Unlucky; inauspicious; unfavorable" },
+      { era: "1600s", def: "Suggesting evil intent; threatening harm" },
+    ],
+  },
+  {
+    answer: decode("U01VRw=="),
+    clue: "Neat and spruce in dress; trim; smooth and prim",
+    hints: [
+      { era: "1600s", def: "Affectedly precise; prim; self-satisfied in appearance" },
+      { era: "1800s", def: "Excessively self-satisfied; complacent" },
+    ],
+  },
+  {
+    answer: decode("VE9JTEVU"),
+    clue: "A covering of linen spread over a dressing table",
+    hints: [
+      { era: "1600s", def: "The act of dressing and grooming oneself" },
+      { era: "1800s", def: "A fixture for the disposal of bodily waste" },
+    ],
+  },
+  {
+    answer: decode("VFJBVkVM"),
+    clue: "To toil; to labor; to suffer the pains of childbirth",
+    hints: [
+      { era: "1300s", def: "To make a difficult or arduous journey" },
+      { era: "1500s", def: "To go from one place to another" },
+    ],
+  },
+  {
+    answer: decode("V0FSUkFOVA=="),
+    clue: "A defender; a protector; a guardian",
+    hints: [
+      { era: "1300s", def: "A guarantee; an assurance of quality or safety" },
+      { era: "1600s", def: "A legal writ authorizing an action" },
+    ],
+  },
+  {
+    answer: decode("V0VJUkQ="),
+    clue: "Fate; destiny; the power to control fate",
+    hints: [
+      { era: "1400s", def: "Of or pertaining to the Fates; prophetic" },
+      { era: "1800s", def: "Uncanny; strange; eerily unusual" },
+    ],
+  },
+  {
+    answer: decode("V09STQ=="),
+    clue: "A serpent; a dragon; a great sea creature",
+    hints: [
+      { era: "1200s", def: "Any creeping or crawling animal, including snakes" },
+      { era: "1600s", def: "A small, soft-bodied invertebrate that burrows in soil" },
+    ],
+  },
+  {
+    answer: decode("TElWSUQ="),
+    clue: "Of a blue-gray or leaden color; discolored as a bruise",
+    hints: [
+      { era: "1600s", def: "Pale; ashen; deathly white" },
+      { era: "1900s", def: "Furiously angry; enraged" },
+    ],
+  },
+  {
+    answer: decode("R0xBTU9VUg=="),
+    clue: "A magic spell; an enchantment cast over the eyes",
+    hints: [
+      { era: "1700s", def: "A bewitching or alluring charm" },
+      { era: "1900s", def: "An attractive or exciting quality; beauty and elegance" },
+    ],
+  },
+  {
+    answer: decode("S05JR0hU"),
+    clue: "A boy; a young servant or attendant",
+    hints: [
+      { era: "1100s", def: "A military servant; a mounted soldier" },
+      { era: "1300s", def: "A man given an honorary title by the sovereign" },
+    ],
+  },
+  {
+    answer: decode("VE9SUEVETw=="),
+    clue: "An electric ray; a fish that delivers numbing shocks",
+    hints: [
+      { era: "1700s", def: "An underwater explosive mine" },
+      { era: "1800s", def: "A self-propelled underwater missile" },
+    ],
+  },
+  {
+    answer: decode("VEFMRU5U"),
+    clue: "A unit of weight or money in the ancient world",
+    hints: [
+      { era: "1400s", def: "A person's natural disposition or inclination" },
+      { era: "1600s", def: "A natural aptitude or skill" },
+    ],
+  },
+  {
+    answer: decode("U1BJTlNURVI="),
+    clue: "A woman whose occupation is spinning thread",
+    hints: [
+      { era: "1600s", def: "A woman past the typical age of marriage" },
+      { era: "1700s", def: "An unmarried woman, especially an older one" },
+    ],
+  },
+  {
+    answer: decode("RElBUEVS"),
+    clue: "A textile fabric woven with a repeating diamond pattern",
+    hints: [
+      { era: "1500s", def: "A towel or napkin of patterned fabric" },
+      { era: "1800s", def: "An absorbent garment worn by infants" },
+    ],
+  },
+  {
+    answer: decode("REVDSU1BVEU="),
+    clue: "To select by lot and execute one in every ten soldiers",
+    hints: [
+      { era: "1600s", def: "To destroy a large proportion of something" },
+      { era: "1800s", def: "To cause great destruction or devastation" },
+    ],
+  },
 ];
 
 export default STREAKS;
