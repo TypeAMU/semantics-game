@@ -80,12 +80,10 @@ export default function App() {
             onClick={() => setScreen('streak')}
             style={{ ...S.card, animationDelay: '0.15s' }}
           >
-            <span style={S.cardIcon}>❧</span>
+            <span style={S.cardIcon}>♯</span>
             <span className="menu-card-title" style={S.cardTitle}>Streak</span>
             <span className="menu-card-desc" style={S.cardDesc}>Solve as many as you can in a row. One loss ends it all.</span>
-            {stats.streakBest > 0 && (
-              <span style={S.cardStat}>Best: {stats.streakBest}</span>
-            )}
+            <span style={S.cardStat}>Max Streak: {stats.streakBest}</span>
           </button>
 
           <button

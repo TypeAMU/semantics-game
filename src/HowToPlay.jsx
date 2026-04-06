@@ -75,7 +75,7 @@ export default function HowToPlay({ onBack }) {
           </div>
 
           <div style={S.modeRow}>
-            <span style={S.modeIcon}>❧</span>
+            <span style={S.modeIcon}>♯</span>
             <div>
               <span style={S.modeName}>Streak</span>
               <p style={S.modeDesc}>Solve as many puzzles in a row as you can. One loss ends your streak.</p>

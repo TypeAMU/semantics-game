@@ -641,7 +641,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         {/* Streak over overlay */}
         {mode === "streak" && streakOver && (
           <div className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}>
-            <div style={S.resultGlyph}>❧</div>
+            <div style={S.resultGlyph}>♯</div>
             <div style={S.resLabel}>Streak Over</div>
             <div style={S.resWord}>{streak}</div>
             <div style={S.resScore}>
