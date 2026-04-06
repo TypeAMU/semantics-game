@@ -249,6 +249,606 @@ const STREAKS = [
       { era: "1600s", def: "A bound collection of maps of the world" },
     ],
   },
+  {
+    answer: decode("Q0FSRUVS"),
+    clue: "A short gallop of a horse; a racecourse",
+    hints: [
+      { era: "1500s", def: "Speed; swift forward motion" },
+      { era: "1800s", def: "The general course of one's actions through life" },
+    ],
+  },
+  {
+    answer: decode("Q0FNUA=="),
+    clue: "An army; conflict; battle",
+    hints: [
+      { era: "1500s", def: "To fight or contend; to wrangle" },
+      { era: "1600s", def: "A base where military forces are lodged" },
+    ],
+  },
+  {
+    answer: decode("RE9PTQ=="),
+    clue: "A law; a judgment or decision",
+    hints: [
+      { era: "1300s", def: "A sentence or penalty for illegal behaviour" },
+      { era: "1600s", def: "The Last Judgment; final divine reckoning" },
+    ],
+  },
+  {
+    answer: decode("Qk9PVA=="),
+    clue: "A medicinal cure or remedy",
+    hints: [
+      { era: "1500s", def: "Profit, gain, advantage; to be of use" },
+      { era: "1600s", def: "Repair work; the act of fixing structures" },
+    ],
+  },
+  {
+    answer: decode("RUxFTUVOVA=="),
+    clue: "The sky; one of the heavenly spheres carrying the celestial bodies",
+    hints: [
+      { era: "1500s", def: "Earth, water, air, or fire as a fundamental substance" },
+      { era: "1700s", def: "The basic principles or rudiments of a field of knowledge" },
+    ],
+  },
+  {
+    answer: decode("Q0xFUks="),
+    clue: "A scholar; a man of learning",
+    hints: [
+      { era: "1400s", def: "A cleric or clergyman in holy orders" },
+      { era: "1800s", def: "One who works with records and accounts in an office" },
+    ],
+  },
+  {
+    answer: decode("Q0FTVUFM"),
+    clue: "A vagrant; a tramp receiving parish relief for the night",
+    hints: [
+      { era: "1800s", def: "Happening by chance; coming without regularity" },
+      { era: "1900s", def: "Informal, relaxed; designed for everyday use" },
+    ],
+  },
+  {
+    answer: decode("Q0hBTkdF"),
+    clue: "A public house; an alehouse",
+    hints: [
+      { era: "1400s", def: "To exchange one thing for another" },
+      { era: "1600s", def: "To become something different" },
+    ],
+  },
+  {
+    answer: decode("QkxBTks="),
+    clue: "A small French coin, originally of silver, worth five deniers",
+    hints: [
+      { era: "1500s", def: "White or pale; without colour" },
+      { era: "1600s", def: "An empty space; a void on a page to be filled in" },
+    ],
+  },
+  {
+    answer: decode("QlVMTEVU"),
+    clue: "A small ball; a cannonball",
+    hints: [
+      { era: "1500s", def: "A round projectile fired from a musket or cannon" },
+      { era: "1800s", def: "A pointed metal projectile shot from a gun at high speed" },
+    ],
+  },
+  {
+    answer: decode("QVZPSUQ="),
+    clue: "To make empty or void; to emit or throw out",
+    hints: [
+      { era: "1400s", def: "To leave, evacuate; to withdraw from a place" },
+      { era: "1600s", def: "To keep away from; to shun" },
+    ],
+  },
+  {
+    answer: decode("RFJBSU4="),
+    clue: "A drink; a draught of liquor",
+    hints: [
+      { era: "1500s", def: "To draw off liquid gradually; to filter or strain" },
+      { era: "1700s", def: "A conduit or channel for carrying off water" },
+    ],
+  },
+  {
+    answer: decode("QlJBTkQ="),
+    clue: "A sword; a flame; a piece of burning wood",
+    hints: [
+      { era: "1500s", def: "A mark burned into flesh with a hot iron" },
+      { era: "1800s", def: "A particular make or type of goods; a trademark" },
+    ],
+  },
+  {
+    answer: decode("REVCQVRF"),
+    clue: "To fight; to engage in combat; strife",
+    hints: [
+      { era: "1400s", def: "To strive for; to contend in battle" },
+      { era: "1600s", def: "To argue or dispute, especially in a formal setting" },
+    ],
+  },
+  {
+    answer: decode("QkFSTg=="),
+    clue: "A child; a son or daughter",
+    hints: [
+      { era: "1200s", def: "Offspring; one's progeny" },
+      { era: "1500s", def: "A building for storing grain after harvest" },
+    ],
+  },
+  {
+    answer: decode("QkVMTA=="),
+    clue: "A bubble, especially on the surface of water",
+    hints: [
+      { era: "1400s", def: "A hollow, rounded shape; a blister or vesicle" },
+      { era: "1600s", def: "A cup-shaped metal instrument that rings when struck" },
+    ],
+  },
+  {
+    answer: decode("QlVUVE9O"),
+    clue: "A unit of length equal to one-twelfth of an inch",
+    hints: [
+      { era: "1500s", def: "A bud or knob on a plant; a clove of garlic" },
+      { era: "1700s", def: "A small disc sewn to a garment, passed through a loop to fasten it" },
+    ],
+  },
+  {
+    answer: decode("REFOR0VS"),
+    clue: "Dominion; a lord's power to harm or penalise his subjects",
+    hints: [
+      { era: "1400s", def: "Liability; being within reach of a penalty" },
+      { era: "1600s", def: "Exposure to likely harm; peril" },
+    ],
+  },
+  {
+    answer: decode("Q0xJUA=="),
+    clue: "To hug; to embrace; to clasp in the arms",
+    hints: [
+      { era: "1500s", def: "To hold tightly; to grip or cling to" },
+      { era: "1700s", def: "To fasten together with a small device" },
+    ],
+  },
+  {
+    answer: decode("Q0hFQVA="),
+    clue: "A market; a marketplace; trade and traffic of goods",
+    hints: [
+      { era: "1400s", def: "A bargain; a good price for something purchased" },
+      { era: "1600s", def: "Low in price; costing little" },
+    ],
+  },
+  {
+    answer: decode("Q0FLRQ=="),
+    clue: "A foolish person",
+    hints: [
+      { era: "1300s", def: "A flat round of bread baked hard on both sides" },
+      { era: "1600s", def: "A rich, sweet dessert food made of flour and sugar" },
+    ],
+  },
+  {
+    answer: decode("REFSRQ=="),
+    clue: "To lie or crouch down in fear; to cower",
+    hints: [
+      { era: "1400s", def: "To stare stupidly or vacantly; to gaze in wonder" },
+      { era: "1600s", def: "To have enough courage to do something" },
+    ],
+  },
+  {
+    answer: decode("RkFDVA=="),
+    clue: "A wrongful or criminal deed; an evil act",
+    hints: [
+      { era: "1500s", def: "A thing done or performed; an action or deed" },
+      { era: "1700s", def: "Something actual, as opposed to invented; a truth" },
+    ],
+  },
+  {
+    answer: decode("TElOSw=="),
+    clue: "A torch, used to light dark streets at night",
+    hints: [
+      { era: "1500s", def: "A single ring or loop of a chain" },
+      { era: "1700s", def: "A connection between places, people, or ideas" },
+    ],
+  },
+  {
+    answer: decode("TUFMTA=="),
+    clue: "An old game played with mallets and balls; pall-mall",
+    hints: [
+      { era: "1700s", def: "A shaded public walk or promenade, originally for playing the game" },
+      { era: "1900s", def: "A large enclosed shopping centre" },
+    ],
+  },
+  {
+    answer: decode("Tk9JU0U="),
+    clue: "Music; a concert; a company of musicians; a band",
+    hints: [
+      { era: "1300s", def: "A loud outcry; a clamour or commotion" },
+      { era: "1600s", def: "Any unwanted or unpleasant sound" },
+    ],
+  },
+  {
+    answer: decode("RE9VQlQ="),
+    clue: "To fill with fear; to affright; to dread",
+    hints: [
+      { era: "1400s", def: "To suspect; to fear that something is true" },
+      { era: "1600s", def: "To be undecided about; to lack confidence in" },
+    ],
+  },
+  {
+    answer: decode("Q1JFQU0="),
+    clue: "The chrism; consecrated oil used in anointing ceremonies",
+    hints: [
+      { era: "1400s", def: "The rich, fatty part of milk that rises to the top" },
+      { era: "1700s", def: "The best part of anything; the choicest portion" },
+    ],
+  },
+  {
+    answer: decode("RE9DVE9S"),
+    clue: "A teacher; one skilled in a profession or branch of knowledge",
+    hints: [
+      { era: "1500s", def: "A learned theologian; a father of the church" },
+      { era: "1700s", def: "A physician; one who practises the healing art" },
+    ],
+  },
+  {
+    answer: decode("QlVER0VU"),
+    clue: "A wallet, purse, or leather bag",
+    hints: [
+      { era: "1600s", def: "A compact collection of things; a bundle" },
+      { era: "1800s", def: "The amount of money earmarked for a particular purpose" },
+    ],
+  },
+  {
+    answer: decode("Q0FSUEVU"),
+    clue: "A wrought cover for tables; a thick ornamental tablecloth",
+    hints: [
+      { era: "1500s", def: "A rich fabric spread over any surface for decoration" },
+      { era: "1700s", def: "A thick woven covering laid on a floor" },
+    ],
+  },
+  {
+    answer: decode("RU5HSU5F"),
+    clue: "Ingenuity; cunning; trickery; guile",
+    hints: [
+      { era: "1400s", def: "A device or contrivance; an ingenious invention" },
+      { era: "1700s", def: "A machine that converts energy into mechanical force" },
+    ],
+  },
+  {
+    answer: decode("Qk9UVExF"),
+    clue: "A bundle, especially of hay; something tied in a bundle",
+    hints: [
+      { era: "1400s", def: "A dwelling; a habitation; an abode" },
+      { era: "1600s", def: "A container of glass or plastic for holding liquid" },
+    ],
+  },
+  {
+    answer: decode("Q0FOQ0VM"),
+    clue: "An enclosure; a boundary; a limit",
+    hints: [
+      { era: "1400s", def: "To shut out with a railing or latticework" },
+      { era: "1600s", def: "To cross out or strike through; to annul" },
+    ],
+  },
+  {
+    answer: decode("RVNTQVk="),
+    clue: "A test or experiment; a trial; an assay",
+    hints: [
+      { era: "1500s", def: "An attempt or endeavour; a try" },
+      { era: "1600s", def: "A written composition exploring a topic at moderate length" },
+    ],
+  },
+  {
+    answer: decode("REVDSURF"),
+    clue: "To cut off; to separate",
+    hints: [
+      { era: "1500s", def: "To settle a contest or dispute; to determine the winner" },
+      { era: "1700s", def: "To make a choice or come to a conclusion" },
+    ],
+  },
+  {
+    answer: decode("REVHUkVF"),
+    clue: "A step on a set of stairs; the rung of a ladder",
+    hints: [
+      { era: "1400s", def: "A stage or position in a scale of rank or quality" },
+      { era: "1600s", def: "A qualification awarded upon completion of study" },
+    ],
+  },
+  {
+    answer: decode("R0xPUlk="),
+    clue: "Pride; boastfulness; arrogance",
+    hints: [
+      { era: "1300s", def: "The honour and praise offered in worship" },
+      { era: "1500s", def: "Great beauty, splendour, and magnificence" },
+    ],
+  },
+  {
+    answer: decode("Q0hFQVQ="),
+    clue: "A sort of low-quality bread",
+    hints: [
+      { era: "1500s", def: "An act of fraud or deception; a swindle" },
+      { era: "1700s", def: "To violate rules in order to gain advantage" },
+    ],
+  },
+  {
+    answer: decode("TFVOQ0g="),
+    clue: "A thin piece or thick hunk of something",
+    hints: [
+      { era: "1500s", def: "A lump of food swallowed at one gulp" },
+      { era: "1800s", def: "A light meal eaten around midday" },
+    ],
+  },
+  {
+    answer: decode("R1JJTEw="),
+    clue: "To make angry; to provoke; to offend",
+    hints: [
+      { era: "1500s", def: "To terrify; to make tremble; to shiver" },
+      { era: "1700s", def: "To cook food on a grating over an open fire" },
+    ],
+  },
+  {
+    answer: decode("SEVBVlk="),
+    clue: "With child; pregnant",
+    hints: [
+      { era: "1300s", def: "Laden; burdened; weighed down" },
+      { era: "1500s", def: "Having great weight; difficult to lift" },
+    ],
+  },
+  {
+    answer: decode("UElOSw=="),
+    clue: "A narrow boat; a small sailing vessel",
+    hints: [
+      { era: "1500s", def: "A garden flower of the genus Dianthus" },
+      { era: "1700s", def: "A pale red colour, like that of the flower" },
+    ],
+  },
+  {
+    answer: decode("Qk9TUw=="),
+    clue: "A hassock or small seat, especially made from a bundle of straw",
+    hints: [
+      { era: "1500s", def: "A raised knob or stud; a rounded protuberance" },
+      { era: "1800s", def: "A person who oversees and directs the work of others" },
+    ],
+  },
+  {
+    answer: decode("RE9NRQ=="),
+    clue: "A building; a house; an edifice",
+    hints: [
+      { era: "1500s", def: "A stately building; a mansion or palace" },
+      { era: "1600s", def: "A rounded vault forming the roof of a building" },
+    ],
+  },
+  {
+    answer: decode("QklSRA=="),
+    clue: "A chicken; the young of a fowl; a nestling",
+    hints: [
+      { era: "1300s", def: "Any feathered creature; a fowl of any kind" },
+      { era: "1600s", def: "A person, especially a young woman" },
+    ],
+  },
+  {
+    answer: decode("Qk9NQg=="),
+    clue: "A great booming noise; a hollow sound",
+    hints: [
+      { era: "1500s", def: "A hollow iron ball filled with gunpowder and lit by a fuse" },
+      { era: "1700s", def: "An explosive device intended as a weapon" },
+    ],
+  },
+  {
+    answer: decode("QlVDSw=="),
+    clue: "A fop or dandy; a dashing young man of fashion",
+    hints: [
+      { era: "1300s", def: "A male goat" },
+      { era: "1500s", def: "A male deer, antelope, or rabbit" },
+    ],
+  },
+  {
+    answer: decode("Q09PSw=="),
+    clue: "To make the noise of the cuckoo",
+    hints: [
+      { era: "1400s", def: "To throw or toss" },
+      { era: "1600s", def: "A person who prepares food for eating" },
+    ],
+  },
+  {
+    answer: decode("Q09STg=="),
+    clue: "To render intoxicated; to make drunk",
+    hints: [
+      { era: "1300s", def: "A single grain or seed of a cereal plant" },
+      { era: "1600s", def: "Any cereal plant that is the main crop of a country" },
+    ],
+  },
+  {
+    answer: decode("RFVTVA=="),
+    clue: "To drink up quickly; to toss off",
+    hints: [
+      { era: "1400s", def: "To reduce to a fine powder; to pulverise" },
+      { era: "1600s", def: "Fine, dry particles of earth or other matter" },
+    ],
+  },
+  {
+    answer: decode("RFVNUA=="),
+    clue: "A melancholy strain or tune in music; any tune",
+    hints: [
+      { era: "1500s", def: "To knock heavily; to stump or thump" },
+      { era: "1700s", def: "A place where waste or garbage is left" },
+    ],
+  },
+  {
+    answer: decode("RUFSTg=="),
+    clue: "Of milk: to curdle, especially in the cheesemaking process",
+    hints: [
+      { era: "1300s", def: "To grieve; to mourn; to yearn" },
+      { era: "1500s", def: "To gain through applied effort or work" },
+    ],
+  },
+  {
+    answer: decode("RkxBRw=="),
+    clue: "A slice of turf; a sod; a flat paving stone",
+    hints: [
+      { era: "1400s", def: "A plant with sword-shaped leaves, especially an iris" },
+      { era: "1600s", def: "A piece of cloth decorated with an emblem" },
+    ],
+  },
+  {
+    answer: decode("RkxBVA=="),
+    clue: "A dull fellow; a simpleton; a gull easily cheated",
+    hints: [
+      { era: "1500s", def: "A level stretch of ground; a plain" },
+      { era: "1800s", def: "A set of rooms on one floor forming a residence" },
+    ],
+  },
+  {
+    answer: decode("R0VBUg=="),
+    clue: "Goods; property; household items; personal belongings",
+    hints: [
+      { era: "1400s", def: "Business matters; affairs; concern" },
+      { era: "1700s", def: "A toothed wheel that meshes with another; equipment" },
+    ],
+  },
+  {
+    answer: decode("SElOVA=="),
+    clue: "An opportunity; an occasion; a fit time",
+    hints: [
+      { era: "1500s", def: "A slight mention; an indirect suggestion" },
+      { era: "1700s", def: "A clue; a small piece of practical information" },
+    ],
+  },
+  {
+    answer: decode("SVRFTQ=="),
+    clue: "A hint; an innuendo; an intimation",
+    hints: [
+      { era: "1500s", def: "An individual entry or article in a list or account" },
+      { era: "1700s", def: "A distinct physical object; a thing" },
+    ],
+  },
+  {
+    answer: decode("TEFLRQ=="),
+    clue: "A kind of fine, white linen",
+    hints: [
+      { era: "1300s", def: "A pit or ditch; a pool of standing water" },
+      { era: "1500s", def: "A large, landlocked body of fresh water" },
+    ],
+  },
+  {
+    answer: decode("TEFTVA=="),
+    clue: "A burden; a load; a cargo; freight",
+    hints: [
+      { era: "1400s", def: "A measure of weight, varying by goods" },
+      { era: "1600s", def: "Final; coming after all others of its kind" },
+    ],
+  },
+  {
+    answer: decode("TE9WRQ=="),
+    clue: "A thin silk material",
+    hints: [
+      { era: "1300s", def: "Affection; a deep feeling of fondness" },
+      { era: "1600s", def: "A deep caring for the existence of another" },
+    ],
+  },
+  {
+    answer: decode("TUVTUw=="),
+    clue: "Mass; a church service; a religious ceremony",
+    hints: [
+      { era: "1400s", def: "A portion of food served at a meal; a dish" },
+      { era: "1700s", def: "A state of disorder; a disorganised jumble" },
+    ],
+  },
+  {
+    answer: decode("UE9TRQ=="),
+    clue: "To ask questions; to interrogate; to examine closely",
+    hints: [
+      { era: "1500s", def: "To puzzle or perplex someone with a question" },
+      { era: "1700s", def: "To assume a position or attitude for effect" },
+    ],
+  },
+  {
+    answer: decode("UExBTlQ="),
+    clue: "A stash or cache of hidden goods",
+    hints: [
+      { era: "1400s", def: "A young tree; a sapling; a cutting set in the ground" },
+      { era: "1600s", def: "Any living organism that is not an animal" },
+    ],
+  },
+  {
+    answer: decode("QUxMT1c="),
+    clue: "To praise; to approve of; to commend",
+    hints: [
+      { era: "1400s", def: "To sanction; to invest with authority" },
+      { era: "1600s", def: "To permit; to let someone do or have something" },
+    ],
+  },
+  {
+    answer: decode("Q0hBUk0="),
+    clue: "To make music upon; to play or sing",
+    hints: [
+      { era: "1400s", def: "An incantation; a magic spell recited or chanted" },
+      { era: "1600s", def: "An attractive or alluring quality; personal appeal" },
+    ],
+  },
+  {
+    answer: decode("RFJJTEw="),
+    clue: "To entice or allure; to decoy; to lure",
+    hints: [
+      { era: "1500s", def: "A small trickling stream; a rill" },
+      { era: "1700s", def: "To bore a hole using a rotating tool" },
+    ],
+  },
+  {
+    answer: decode("RkFJUlk="),
+    clue: "The realm of faerie; enchantment; illusion",
+    hints: [
+      { era: "1400s", def: "A magical being of human form, often mischievous" },
+      { era: "1600s", def: "An attractive young woman" },
+    ],
+  },
+  {
+    answer: decode("RkFVTFQ="),
+    clue: "Want; lack; absence",
+    hints: [
+      { era: "1400s", def: "A defect or flaw; an imperfection" },
+      { era: "1600s", def: "Culpability; responsibility for something blameworthy" },
+    ],
+  },
+  {
+    answer: decode("R1JPU1M="),
+    clue: "Easy to perceive; plain; evident; obvious",
+    hints: [
+      { era: "1500s", def: "Coarse; rough; lacking refinement" },
+      { era: "1700s", def: "Highly or conspicuously offensive; disgusting" },
+    ],
+  },
+  {
+    answer: decode("QURWRVJU"),
+    clue: "To turn attention to; to take notice of something",
+    hints: [
+      { era: "1600s", def: "To refer to; to make mention of" },
+      { era: "1900s", def: "An advertisement; a public notice promoting goods" },
+    ],
+  },
+  {
+    answer: decode("Q0FTVExF"),
+    clue: "A close helmet; a helm enclosing the whole head",
+    hints: [
+      { era: "1300s", def: "A fortified tower or stronghold" },
+      { era: "1500s", def: "A large fortified residential building or compound" },
+    ],
+  },
+  {
+    answer: decode("Q0xJTklD"),
+    clue: "Someone who receives baptism on a sickbed",
+    hints: [
+      { era: "1600s", def: "A school where medicine is taught by examining patients" },
+      { era: "1800s", def: "A medical facility for treatment of outpatients" },
+    ],
+  },
+  {
+    answer: decode("TUFJTA=="),
+    clue: "A spot on a bird's feather; a spotted feather",
+    hints: [
+      { era: "1300s", def: "Armour made of interlinked metal rings" },
+      { era: "1700s", def: "Letters and packages conveyed by a postal system" },
+    ],
+  },
+  {
+    answer: decode("SkFERQ=="),
+    clue: "To treat with contempt; to spurn; to make ridiculous",
+    hints: [
+      { era: "1400s", def: "A tired, worn-out horse; a nag" },
+      { era: "1600s", def: "A semiprecious green stone used for ornaments" },
+    ],
+  },
 ];
 
 export default STREAKS;
