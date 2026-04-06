@@ -1,7 +1,7 @@
 import STREAKS from "./streaks";
-import { getDailyPuzzle, getPuzzleNumber } from "./daily";
+import { getDailyPuzzle, getPuzzleNumber, getPuzzleForDay, getDailyArchive } from "./daily";
 
-export { getDailyPuzzle, getPuzzleNumber };
+export { getDailyPuzzle, getPuzzleNumber, getPuzzleForDay, getDailyArchive };
 export default STREAKS;
 
 export function getPuzzleByIndex(index) {

@@ -609,13 +609,13 @@ export default function Semantics({ mode = "streak", onBack }) {
                 <span style={S.journeyNew}>"{modernDef}"</span>
               ) : (
                 <span style={S.journeyNew}>
-                  {answer.charAt(0) + answer.slice(1).toLowerCase()} — as we know it today
+                  {answer.charAt(0) + answer.slice(1).toLowerCase()}, as we know it today
                 </span>
               )}
             </div>
             {etymology && (etymology.obsolete.length > 0 || etymology.archaic.length > 0) && (
               <div style={S.etymologySection}>
-                <div style={S.etymLabel}>Word Journey — from Wiktionary</div>
+                <div style={S.etymLabel}>Word Journey, from Wiktionary</div>
                 {etymology.obsolete.map((d, i) => (
                   <div key={`obs-${i}`} style={S.etymEntry}>
                     <span style={S.etymBadge}>obsolete</span>

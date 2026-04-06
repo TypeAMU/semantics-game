@@ -21,7 +21,7 @@ export default function HowToPlay({ onBack }) {
         <div style={S.section}>
           <h2 style={S.sectionTitle}>The Goal</h2>
           <p style={S.text}>
-            Words change meaning over time. You're given an <em>ancient definition</em> of a common English word &mdash; one that no longer means what it used to. Guess the modern word.
+            Words change meaning over time. You're given an <em>ancient definition</em> of a common English word, one that no longer means what it used to. Guess the modern word.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function HowToPlay({ onBack }) {
         <div style={S.section}>
           <h2 style={S.sectionTitle}>Winning & Losing</h2>
           <p style={S.text}>
-            You win by typing the exact answer in either Explore or Solve mode. You lose when all 3 explores and all 3 solves are used up without finding the word. The fewer actions you use, the better your score &mdash; solving on your first try is the best result.
+            You win by typing the exact answer in either Explore or Solve mode. You lose when all 3 explores and all 3 solves are used up without finding the word. The fewer actions you use, the better your score. Solving on your first try is the best result.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export default function HowToPlay({ onBack }) {
             <span style={S.modeIcon}>♯</span>
             <div>
               <span style={S.modeName}>Streak</span>
-              <p style={S.modeDesc}>Solve as many puzzles in a row as you can. One loss ends your streak. Difficulty increases as your streak grows &mdash; you'll have fewer explores and solves to work with.</p>
+              <p style={S.modeDesc}>Solve as many puzzles in a row as you can. One loss ends your streak. Difficulty increases as your streak grows. You'll have fewer explores and solves to work with.</p>
             </div>
           </div>
         </div>

@@ -79,6 +79,19 @@ export function getDailyResult(dayNumber) {
   return stats.dailyCompleted[dayNumber] || null;
 }
 
+/**
+ * Get archive entries enriched with user results.
+ * Each entry: { dayNumber, date, puzzle, result }
+ * result is null (not played), or { won, guesses, date }.
+ */
+export function getArchiveWithResults(archiveEntries) {
+  const stats = read();
+  return archiveEntries.map((entry) => ({
+    ...entry,
+    result: stats.dailyCompleted[entry.dayNumber] || null,
+  }));
+}
+
 export function resetStats() {
   try {
     localStorage.removeItem(STORAGE_KEY);
