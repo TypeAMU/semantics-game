@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import PUZZLES, { getPuzzleByIndex, getDailyPuzzle, getPuzzleNumber, getLockedDailyIndices } from "./puzzles";
 import { isWord, initializeCache } from "./services/wordValidation";
-import { fetchDefinitions } from "./services/definitionsApi";
 import { getStats, recordStreakResult, recordDailyResult, getDailyResult } from "./services/gameStats";
 
 initializeCache(PUZZLES);
@@ -67,27 +66,7 @@ export default function Semantics({ mode = "streak", onBack }) {
   const [copied, setCopied] = useState(false);
   const [toast, setToast] = useState("");
   const [checking, setChecking] = useState(false);
-  const [etymology, setEtymology] = useState(null);
-  const [modernDef, setModernDef] = useState("");
   const listEndRef = useRef(null);
-
-  useEffect(() => {
-    if (gameState !== "playing") {
-      fetchDefinitions(answer).then(setEtymology).catch(() => {});
-      if (puzzle.modernDef) {
-        setModernDef(puzzle.modernDef);
-      } else {
-        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${answer.toLowerCase()}`)
-          .then((r) => r.ok ? r.json() : null)
-          .then((data) => {
-            if (!data) return;
-            const def = data[0]?.meanings?.[0]?.definitions?.[0]?.definition;
-            if (def) setModernDef(def);
-          })
-          .catch(() => {});
-      }
-    }
-  }, [gameState, answer]);
 
   // Record daily result when game ends
   useEffect(() => {
@@ -612,34 +591,6 @@ export default function Semantics({ mode = "streak", onBack }) {
               {gameState === "won" ? "" : "The word was"}
             </div>
             <div style={S.resWord}>{answer}</div>
-            <div style={S.resJourney}>
-              <span style={S.journeyOld}>"{puzzle.clue}"</span>
-              <span style={S.journeyArrow}>↓</span>
-              {modernDef ? (
-                <span style={S.journeyNew}>"{modernDef}"</span>
-              ) : (
-                <span style={S.journeyNew}>
-                  {answer.charAt(0) + answer.slice(1).toLowerCase()}, as we know it today
-                </span>
-              )}
-            </div>
-            {etymology && (etymology.obsolete.length > 0 || etymology.archaic.length > 0) && (
-              <div style={S.etymologySection}>
-                <div style={S.etymLabel}>Word Journey, from Wiktionary</div>
-                {etymology.obsolete.map((d, i) => (
-                  <div key={`obs-${i}`} style={S.etymEntry}>
-                    <span style={S.etymBadge}>obsolete</span>
-                    <span style={S.etymDef}>{d.definition}</span>
-                  </div>
-                ))}
-                {etymology.archaic.map((d, i) => (
-                  <div key={`arc-${i}`} style={S.etymEntry}>
-                    <span style={{ ...S.etymBadge, color: "#e8c458", borderColor: "rgba(232,196,88,.3)" }}>{d.label}</span>
-                    <span style={S.etymDef}>{d.definition}</span>
-                  </div>
-                ))}
-              </div>
-            )}
             {gameState === "won" && (
               <div style={S.resScore}>
                 {explores} explore{explores !== 1 ? "s" : ""} + {solves} solve
@@ -984,30 +935,6 @@ const S = {
     fontStyle: "italic",
   },
 
-  modernDefRow: {
-    marginTop: 12,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 4,
-  },
-  modernDefLabel: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 10,
-    fontWeight: 700,
-    letterSpacing: ".1em",
-    textTransform: "uppercase",
-    color: "#a8d898",
-  },
-  modernDefText: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 12,
-    fontStyle: "italic",
-    fontWeight: 500,
-    color: "#a8d898",
-    lineHeight: 1.4,
-    opacity: 0.7,
-  },
   inlineHints: {
     marginTop: 12,
     display: "flex",
@@ -1091,27 +1018,12 @@ const S = {
     color: "#f0d89a",
     textTransform: "uppercase",
   },
-  resJourney: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 4,
-    margin: "2px 0",
-    maxWidth: 320,
-  },
   journeyOld: {
     fontFamily: "'Cormorant Garamond', serif",
     fontSize: 12,
     fontStyle: "italic",
     color: "#8a7a60",
     lineHeight: 1.4,
-  },
-  journeyArrow: { color: "#5a5040", fontSize: 13 },
-  journeyNew: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 12,
-    color: "#a8d898",
-    fontStyle: "italic",
   },
   resScore: {
     fontFamily: "'Lora', serif",
@@ -1130,52 +1042,6 @@ const S = {
     color: "#cbb87a",
     cursor: "pointer",
     marginTop: 2,
-  },
-
-  etymologySection: {
-    width: "100%",
-    background: "rgba(232,216,180,.02)",
-    border: "1px solid rgba(232,196,88,.08)",
-    borderRadius: 8,
-    padding: "10px 14px",
-    display: "flex",
-    flexDirection: "column",
-    gap: 6,
-    textAlign: "left",
-  },
-  etymLabel: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 9,
-    fontWeight: 700,
-    letterSpacing: ".14em",
-    textTransform: "uppercase",
-    color: "#5a5448",
-    textAlign: "center",
-    marginBottom: 2,
-  },
-  etymEntry: {
-    display: "flex",
-    alignItems: "baseline",
-    gap: 8,
-  },
-  etymBadge: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 9,
-    fontWeight: 700,
-    letterSpacing: ".06em",
-    textTransform: "uppercase",
-    color: "#8a6a5a",
-    border: "1px solid rgba(138,106,90,.25)",
-    borderRadius: 3,
-    padding: "1px 5px",
-    flexShrink: 0,
-  },
-  etymDef: {
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 12,
-    fontStyle: "italic",
-    color: "#c8bca0",
-    lineHeight: 1.4,
   },
 
   keyboard: {

@@ -12,7 +12,7 @@ Example: the clue "Foolish, ignorant, simple-minded" → answer is **NICE** (whi
 - Full game loop: explore (reveal letters) + solve (guess answer), 3 of each = 6 max actions
 - Two modes: **Daily** (one per day, deterministic) and **Streak** (random from pool, one loss ends it)
 - Timeline hints appear after 3 and 5 actions showing how the word's meaning evolved
-- Post-game: etymology from Wiktionary API, modern definition from Free Dictionary API
+- Post-game: etymology from Wiktionary API
 - Stats in localStorage: streak best, daily completion history, daily consecutive streak
 - **Streak best** shown on menu Streak card and on streak-over splash
 - **Daily best streak** now surfaced on menu Daily card ("Best: N days") — value was tracked but previously not displayed (fixed 2026-04-05)
