@@ -470,7 +470,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         )}
 
         {/* Action buttons */}
-        {gameState === "playing" && (
+        {gameState === "playing" ? (
           <div className="sem-action-row" style={S.actionRow}>
             <button
               className="action-btn sem-action-btn"
@@ -504,6 +504,22 @@ export default function Semantics({ mode = "streak", onBack }) {
                 Any length · {maxSolves - solves} left
               </span>
             </button>
+          </div>
+        ) : (
+          <div className="sem-action-row" style={S.endActions}>
+            {mode === "streak" && gameState === "won" && (
+              <button onClick={nextPuzzle} className="action-btn" style={{ ...S.endBtn, ...S.endBtnPrimary }}>
+                Next word
+              </button>
+            )}
+            <button onClick={share} className="action-btn" style={S.endBtn}>
+              {copied ? "Copied ✓" : "Share result"}
+            </button>
+            {(mode === "daily" || (mode === "streak" && gameState === "lost")) && (
+              <button onClick={onBack} className="action-btn" style={{ ...S.endBtn, ...S.endBtnMuted }}>
+                Back to menu
+              </button>
+            )}
           </div>
         )}
 
@@ -579,55 +595,6 @@ export default function Semantics({ mode = "streak", onBack }) {
           </div>
         )}
 
-        {/* Result */}
-        {gameState !== "playing" && (
-          <div
-            className="sem-result-card" style={{ ...S.resultCard, animation: "resultIn .4s ease forwards" }}
-          >
-            <div style={S.resultGlyph}>
-              {gameState === "won" ? "⁂" : "†"}
-            </div>
-            <div style={S.resLabel}>
-              {gameState === "won" ? "" : "The word was"}
-            </div>
-            <div style={S.resWord}>{answer}</div>
-            {gameState === "won" && (
-              <div style={S.resScore}>
-                {explores} explore{explores !== 1 ? "s" : ""} + {solves} solve
-                {solves !== 1 ? "s" : ""}
-              </div>
-            )}
-            <div style={{ display: "flex", gap: 8 }}>
-              <button onClick={share} style={S.shareBtn}>
-                {copied ? "Copied ✓" : "Share result"}
-              </button>
-              {mode === "daily" && (
-                <button
-                  onClick={onBack}
-                  style={{ ...S.shareBtn, color: "#a8d898", borderColor: "rgba(106,158,90,.22)" }}
-                >
-                  Back to menu
-                </button>
-              )}
-              {mode === "streak" && gameState === "won" && (
-                <button
-                  onClick={nextPuzzle}
-                  style={{ ...S.shareBtn, color: "#a8d898", borderColor: "rgba(106,158,90,.22)" }}
-                >
-                  Next word
-                </button>
-              )}
-              {mode === "streak" && gameState === "lost" && (
-                <button
-                  onClick={onBack}
-                  style={{ ...S.shareBtn, color: "#b8988a", borderColor: "rgba(138,106,90,.22)" }}
-                >
-                  Back to menu
-                </button>
-              )}
-            </div>
-          </div>
-        )}
 
         {/* Streak over overlay */}
         {mode === "streak" && streakOver && (
@@ -1042,6 +1009,35 @@ const S = {
     color: "#cbb87a",
     cursor: "pointer",
     marginTop: 2,
+  },
+  endActions: {
+    width: "100%",
+    display: "flex",
+    gap: 10,
+    justifyContent: "center",
+  },
+  endBtn: {
+    flex: 1,
+    background: "rgba(232,196,88,.08)",
+    border: "1px solid rgba(232,196,88,.18)",
+    borderRadius: 10,
+    padding: "14px 12px",
+    fontSize: 14,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontWeight: 700,
+    color: "#cbb87a",
+    cursor: "pointer",
+    letterSpacing: ".04em",
+  },
+  endBtnPrimary: {
+    background: "rgba(106,158,90,.12)",
+    borderColor: "rgba(106,158,90,.25)",
+    color: "#a8d898",
+  },
+  endBtnMuted: {
+    background: "rgba(138,106,90,.08)",
+    borderColor: "rgba(138,106,90,.18)",
+    color: "#b8988a",
   },
 
   keyboard: {
