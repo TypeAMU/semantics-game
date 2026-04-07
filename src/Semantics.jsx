@@ -63,7 +63,6 @@ export default function Semantics({ mode = "streak", onBack }) {
   const [input, setInput] = useState("");
   const [gameState, setGameState] = useState("playing");
   const [shake, setShake] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [toast, setToast] = useState("");
   const [checking, setChecking] = useState(false);
   const listEndRef = useRef(null);
@@ -274,19 +273,6 @@ export default function Semantics({ mode = "streak", onBack }) {
     listEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [guesses.length]);
 
-  const share = () => {
-    const icons = guesses
-      .map((g) =>
-        g.word === answer ? "🟢" : g.mode === "explore" ? "🔍" : "🔴"
-      )
-      .join("");
-    navigator.clipboard?.writeText(
-      `Σ Semantics ${gameState === "won" ? guesses.length : "X"}/${maxExplores + maxSolves}\n${icons}\n"${puzzle.clue}"`
-    );
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2200);
-  };
-
   const wordFontSize =
     visibleLetters.length <= 6 ? 36 : visibleLetters.length <= 10 ? 28 : 22;
 
@@ -415,7 +401,35 @@ export default function Semantics({ mode = "streak", onBack }) {
         {!(mode === "daily" && dailyAlreadyDone) && <>
         {/* Assembling word */}
         <div className="sem-word-area" style={S.wordArea}>
-          {visibleLetters.length > 0 ? (
+          {gameState !== "playing" ? (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+              <div style={S.wordDisplay}>
+                {[...answer].map((ch, i) => (
+                  <span
+                    key={i}
+                    className="word-letter"
+                    style={{
+                      fontSize: wordFontSize,
+                      color: "#b8daa8",
+                      textShadow: "0 0 16px rgba(168,216,152,.3)",
+                      animationDelay: `${i * 50}ms`,
+                    }}
+                  >
+                    {ch}
+                  </span>
+                ))}
+              </div>
+              {mode === "streak" && gameState === "won" ? (
+                <button onClick={nextPuzzle} className="action-btn" style={{ ...S.endBtn, ...S.endBtnPrimary }}>
+                  Next word
+                </button>
+              ) : (
+                <button onClick={onBack} className="action-btn" style={{ ...S.endBtn, ...S.endBtnMuted }}>
+                  Back to menu
+                </button>
+              )}
+            </div>
+          ) : visibleLetters.length > 0 ? (
             <div style={S.wordDisplay}>
               {visibleLetters.map((lt, i) => (
                 <span
@@ -470,7 +484,7 @@ export default function Semantics({ mode = "streak", onBack }) {
         )}
 
         {/* Action buttons */}
-        {gameState === "playing" ? (
+        {gameState === "playing" && (
           <div className="sem-action-row" style={S.actionRow}>
             <button
               className="action-btn sem-action-btn"
@@ -504,22 +518,6 @@ export default function Semantics({ mode = "streak", onBack }) {
                 Any length · {maxSolves - solves} left
               </span>
             </button>
-          </div>
-        ) : (
-          <div className="sem-action-row" style={S.endActions}>
-            {mode === "streak" && gameState === "won" && (
-              <button onClick={nextPuzzle} className="action-btn" style={{ ...S.endBtn, ...S.endBtnPrimary }}>
-                Next word
-              </button>
-            )}
-            <button onClick={share} className="action-btn" style={S.endBtn}>
-              {copied ? "Copied ✓" : "Share result"}
-            </button>
-            {(mode === "daily" || (mode === "streak" && gameState === "lost")) && (
-              <button onClick={onBack} className="action-btn" style={{ ...S.endBtn, ...S.endBtnMuted }}>
-                Back to menu
-              </button>
-            )}
           </div>
         )}
 
@@ -1009,12 +1007,6 @@ const S = {
     color: "#cbb87a",
     cursor: "pointer",
     marginTop: 2,
-  },
-  endActions: {
-    width: "100%",
-    display: "flex",
-    gap: 10,
-    justifyContent: "center",
   },
   endBtn: {
     flex: 1,
