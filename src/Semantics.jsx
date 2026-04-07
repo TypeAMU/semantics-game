@@ -410,8 +410,11 @@ export default function Semantics({ mode = "streak", onBack }) {
                     className="word-letter"
                     style={{
                       fontSize: wordFontSize,
-                      color: "#b8daa8",
-                      textShadow: "0 0 16px rgba(168,216,152,.3)",
+                      color: gameState === "won" ? "#e8c458" : "#5a5448",
+                      textShadow: gameState === "won"
+                        ? "0 0 18px rgba(232,196,88,.45), 0 0 6px rgba(232,196,88,.2)"
+                        : "none",
+                      opacity: gameState === "won" ? 1 : 0.5,
                       animationDelay: `${i * 50}ms`,
                     }}
                   >
@@ -420,8 +423,8 @@ export default function Semantics({ mode = "streak", onBack }) {
                 ))}
               </div>
               {mode === "streak" && gameState === "won" ? (
-                <button onClick={nextPuzzle} className="action-btn" style={{ ...S.endBtn, ...S.endBtnPrimary }}>
-                  Next word
+                <button onClick={nextPuzzle} className="action-btn" style={{ ...S.endBtn, ...S.endBtnNext }}>
+                  Next &rarr;
                 </button>
               ) : (
                 <button onClick={onBack} className="action-btn" style={{ ...S.endBtn, ...S.endBtnMuted }}>
@@ -861,9 +864,6 @@ const S = {
     display: "flex",
     flexDirection: "column",
     gap: 6,
-    maxHeight: 180,
-    overflowY: "auto",
-    paddingRight: 3,
   },
   guessRow: {
     background: "rgba(232,216,180,.02)",
@@ -1021,10 +1021,13 @@ const S = {
     cursor: "pointer",
     letterSpacing: ".04em",
   },
-  endBtnPrimary: {
-    background: "rgba(106,158,90,.12)",
-    borderColor: "rgba(106,158,90,.25)",
-    color: "#a8d898",
+  endBtnNext: {
+    background: "rgba(232,196,88,.12)",
+    borderColor: "rgba(232,196,88,.3)",
+    color: "#e8c458",
+    fontSize: 20,
+    padding: "16px 36px",
+    letterSpacing: ".06em",
   },
   endBtnMuted: {
     background: "rgba(138,106,90,.08)",
