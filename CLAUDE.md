@@ -6,16 +6,17 @@
 
 Example: the clue "Foolish, ignorant, simple-minded" → answer is **NICE** (which meant "foolish" in the 1300s).
 
-## Current state (2026-04-05)
+## Current state (2026-04-07)
 
 ### What's working
 - Full game loop: explore (reveal letters) + solve (guess answer), 3 of each = 6 max actions
 - Two modes: **Daily** (one per day, deterministic) and **Streak** (random from pool, one loss ends it)
 - Timeline hints appear after 3 and 5 actions showing how the word's meaning evolved
-- Post-game: etymology from Wiktionary API
+- **Inline end-game UI**: no popup/overlay — the `______` word area transforms post-game to show the revealed answer (gold glow on win, faded on loss) with action button ("Next →" for streak win, "Back to menu" otherwise)
+- All guesses (explores + solves) shown without truncation
 - Stats in localStorage: streak best, daily completion history, daily consecutive streak
 - **Streak best** shown on menu Streak card and on streak-over splash
-- **Daily best streak** now surfaced on menu Daily card ("Best: N days") — value was tracked but previously not displayed (fixed 2026-04-05)
+- **Daily best streak** now surfaced on menu Daily card ("Best: N days")
 - Deployed to semantics.fyi via GitHub Pages (`.github/workflows/deploy.yml`)
 
 ### Visual theme (updated 2026-04-05)
@@ -87,7 +88,7 @@ semantics-game/
       obfuscate.js                # base64 encode/decode
     services/
       wordValidation.js           # Free Dictionary API for guess validation
-      definitionsApi.js            # Wiktionary REST API for post-game etymology display
+      definitionsApi.js            # Wiktionary REST API (used by PuzzleResearcher dev tool only)
       apiCache.js                 # Generic cache with TTL + localStorage persistence
       gameStats.js                # localStorage stats (streakBest, dailyCompleted, etc.)
     tools/
@@ -116,13 +117,13 @@ npm run preview      # Preview production build locally
 
 - **No CSS framework**: All styling is inline JS objects (the `S` const at bottom of each component). "Gold on obsidian" aesthetic: near-black warm backgrounds (`#181410` radial), brilliant gold accents (`#e8c458`), sepia body text (`#ddd0b8`), warmer gold headings (`#f0d89a`). Fonts: Cormorant Garamond (headings) + Lora (body).
 - **Responsive**: CSS media queries in `<style>` tags for 768px and 1200px breakpoints. Desktop gets larger fonts, keys, and containers.
-- **API caching**: `apiCache.js` provides a `createCache({ ttl, persistKey })` factory. Deduplicates in-flight requests. Word validation cache is in-memory only; definitions cache persists to localStorage with 24h TTL.
+- **API caching**: `apiCache.js` provides a `createCache({ ttl, persistKey })` factory. Deduplicates in-flight requests. Word validation cache is in-memory only.
 - **Daily puzzle determinism**: `dayOffset = Math.floor((new Date() - new Date(2026, 0, 1)) / 86400000)`. Puzzle = `STREAKS[dayOffset % STREAKS.length]`. Same puzzle for all users on same day.
 - **Streak randomization**: Fisher-Yates shuffle of indices on component mount. Wraps around if streak exceeds pool size.
 
 ## Related project
 
-The data pipeline at `../semantics-data/` (or `/home/ahmad/projects/semantics-data/`) generates puzzle candidates. See its own CLAUDE.md for pipeline details. Key state:
+The data pipeline at `../semantics-data/` (or `/home/ahmad/projects/semantics/semantics-data/`) generates puzzle candidates. See its own CLAUDE.md for pipeline details. Key state:
 - Phase 1 (Wiktionary scrape): 1,097 candidates in `output/candidates.json`
 - Phase 2 (Etymonline enrichment): NOT STARTED
 - Phase 3 (Quality curation): NOT STARTED
